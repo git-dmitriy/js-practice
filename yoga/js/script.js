@@ -31,4 +31,50 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     }
   });
+
+
+  //  timer
+  let deadline = '2020-09-21T00:00:00';
+
+  function getTimeRemaining(endtime) {
+    let t = Date.parse(endtime) - Date.parse(new Date()),
+      seconds = ('00' + Math.floor((t % (1000 * 60)) / 1000)).slice(-2), // 1000 ms == 1s
+      minutes = ('00' + Math.floor((t % (1000 * 60 * 60)) / (1000 * 60))).slice(-2),
+      hours = ('00' + Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).slice(-2), // 3 600s == 60m == 1h
+      days = ('00' + Math.floor(t / (1000 * 60 * 60 * 24))).slice(-2); // 24h == 1 440m == 1d
+
+    return {
+      'total': t,
+      'days': days,
+      'hours': hours,
+      'minutes': minutes,
+      'seconds': seconds
+    };
+
+  }
+
+  function setClock(id, endtime) {
+    let timer = document.getElementById(id),
+      days = document.querySelector('.days'),
+      hours = document.querySelector('.hours'),
+      minutes = document.querySelector('.minutes'),
+      seconds = document.querySelector('.seconds'),
+      timeInterval = setInterval(updateClock, 1000);
+
+    function updateClock() {
+      let t = getTimeRemaining(endtime);
+      days.textContent = t.days;
+      hours.textContent = t.hours;
+      minutes.textContent = t.minutes;
+      seconds.textContent = t.seconds;
+
+      if (t.total <= 0) {
+        clearInterval(timeInterval);
+      }
+    }
+  }
+  setClock('timer', deadline);
+
+
+
 });
