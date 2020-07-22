@@ -93,5 +93,44 @@ window.addEventListener('DOMContentLoaded', function () {
     document.body.style.overflow = '';
   });
 
+  // Form
+
+  let message = {
+    loading: 'Пожлуйста подождите...',
+    succes: 'Спасибо! Мы скоро свяжемся с вами!',
+    failure: 'Что-то пошло не так...'
+  };
+
+  let form = document.querySelector('.main-form'),
+    input = form.getElementsByTagName('input'),
+    statusMessage = document.createElement('div');
+
+  statusMessage.classList.add('status');
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    form.appendChild(statusMessage);
+
+    let request = new XMLHttpRequest();
+    request.open('POST', 'server.php');
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    let formData = new FormData(form);
+    request.send(formData);
+
+    request.addEventListener('readystatechange', function () {
+      if (request.reqdyState < 4) {
+        statusMessage.innerHTML = message.loading;
+      } else if (request.readyState === 4 && request.status == 200) {
+        statusMessage.innerHTML = message.succes;
+      } else {
+        statusMessage.innerHTML = message.failure;
+      }
+    });
+  });
+
+
+  
+
 
 });
