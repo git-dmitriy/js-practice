@@ -5,23 +5,38 @@ const tabs = (headerSelector, tabSelector, contentSelector, activeClass) => {
 
   function hideContent() {
     content.forEach(item => {
-      item.display = 'none';
+      item.style.display = 'none';
     });
 
-    tab.forEach(item => {
+    tabs.forEach(item => {
       item.classList.remove(activeClass);
     });
   };
 
-  function showcontent(i = 0) {
-    content[i].display = 'block';
-    tab[i].classList.add(activeClass);
-
+  function showContent(i = 0) {
+    content[i].style.display = 'block';
+    tabs[i].classList.add(activeClass);
   }
 
   hideContent();
-  showcontent();
+  showContent();
+
+  header.addEventListener('click', (e) => {
+    const target = e.target;
+    if (target.classList.contains(tabSelector.replace(/\./, '')) ||
+      target.parentNode.classList.contains(tabSelector.replace(/\./, ''))) {
+      tabs.forEach((item, i) => {
+        if (target == item || target.parentNode == item) {
+          hideContent();
+          showContent(i);
+        }
+      });
+    }
+  });
+
 
 };
+
+
 
 export default tabs;
