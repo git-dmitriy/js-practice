@@ -5,13 +5,20 @@
 
 const forms = () => {
   const form = document.querySelectorAll('form'),
-    inputs = document.querySelectorAll('input');
+    inputs = document.querySelectorAll('input'),
+    phoneInputs = document.querySelectorAll('input[name="user_phone"');
 
   const message = {
-    loading: 'Загрузка',
+    loading: 'Загрузка...',
     success: 'Спасибо, мы скоро свяжемся с вами',
     failure: 'Что-то пошло не так...'
   };
+
+  phoneInputs.forEach(item => {
+    item.addEventListener('input', () => {
+      item.value = item.value.replace(/\D/, '');
+    });
+  });
 
   const postData = async (url, data) => {
     document.querySelector('.status').textContent = message.loading;
