@@ -33,6 +33,12 @@ const forms = (state) => {
     }
   };
 
+  const closeModal = (selector) => {
+    let modal = document.querySelector(selector);
+    modal.style.display = 'none';
+  };
+
+
   form.forEach(item => {
     item.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -62,12 +68,15 @@ const forms = (state) => {
           clearFormData(formData);
           setTimeout(() => {
             statusMessage.remove();
-          }, 5000);
+            closeModal('.popup_calc_end');
+          }, 3000);
         });
     });
   });
 
   clearFormData(state);
+
+
 };
 
 export default forms;
