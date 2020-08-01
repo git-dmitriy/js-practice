@@ -18,12 +18,19 @@ const forms = (state) => {
       method: 'POST',
       body: data
     });
+    return await res.text();
   };
 
   const clearInputs = () => {
     inputs.forEach(item => {
       item.value = '';
     });
+  };
+
+  const clearFormData = (formData) => {
+    for (let key in state) {
+      delete state[key];
+    }
   };
 
   form.forEach(item => {
@@ -52,6 +59,7 @@ const forms = (state) => {
         })
         .finally(() => {
           clearInputs();
+          clearFormData(formData);
           setTimeout(() => {
             statusMessage.remove();
           }, 5000);
@@ -59,7 +67,7 @@ const forms = (state) => {
     });
   });
 
-
+  clearFormData(state);
 };
 
 export default forms;
