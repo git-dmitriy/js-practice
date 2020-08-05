@@ -1,3 +1,5 @@
+import getScrollbarWidth from "./getScrollbarWidth";
+
 const images = () => {
   /*
   TODO + Отключить прокрутку страницы при открытии изображения
@@ -9,7 +11,8 @@ const images = () => {
 
   const imgPopup = document.createElement("div"),
     workSection = document.querySelector(".works"),
-    bigImage = document.createElement("img");
+    bigImage = document.createElement("img"),
+    scrollWidth = getScrollbarWidth();
 
   workSection.addEventListener("click", (e) => {
     e.preventDefault();
@@ -28,7 +31,8 @@ const images = () => {
     if (target && target.classList.contains("preview")) {
       imgPopup.style.display = "flex";
       document.body.style.overflowY = "hidden";
-      console.log(document.body);
+      document.body.style.marginRight = `${scrollWidth}px`;
+
       const path = target.parentNode.getAttribute("href");
       bigImage.setAttribute("src", path);
       bigImage.style.maxWidth = "50vw";
@@ -37,6 +41,7 @@ const images = () => {
     if (target && target.matches("div.popup")) {
       imgPopup.style.display = "none";
       document.body.style.overflowY = "";
+      document.body.style.marginRight = `0px`;
     }
   });
 };

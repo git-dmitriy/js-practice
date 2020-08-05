@@ -1,4 +1,7 @@
+import getScrollbarWidth from "./getScrollbarWidth";
+
 const modals = () => {
+  let scrollWidth = getScrollbarWidth();
   function bindModal(
     triggerSelector,
     modalSelector,
@@ -20,6 +23,7 @@ const modals = () => {
         });
         modal.style.display = "block";
         document.body.style.overflow = "hidden";
+        document.body.style.marginRight = `${scrollWidth}px`;
       });
     });
 
@@ -29,6 +33,7 @@ const modals = () => {
       });
       modal.style.display = "none";
       document.body.style.overflow = "";
+      document.body.style.marginRight = "0px";
       // document.body.classList.remove('modal-open');
     });
 
@@ -39,6 +44,7 @@ const modals = () => {
         });
         modal.style.display = "none";
         document.body.style.overflow = "";
+        document.body.style.marginRight = "0px";
         // document.body.classList.remove('modal-open');
       }
     });
@@ -48,6 +54,7 @@ const modals = () => {
     setTimeout(function () {
       document.querySelector(selector).style.display = "block";
       document.body.style.overflow = "hidden";
+      document.body.style.marginRight = `${scrollWidth}px`;
     }, time);
   }
 
@@ -75,7 +82,7 @@ const modals = () => {
     false
   );
 
-  showModalOnTimer(".popup", 60000);
+  showModalOnTimer(".popup", 5000);
 };
 
 export default modals;
