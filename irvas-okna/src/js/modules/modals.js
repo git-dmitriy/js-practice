@@ -52,9 +52,19 @@ const modals = () => {
 
   function showModalOnTimer(selector, time) {
     setTimeout(function () {
-      document.querySelector(selector).style.display = "block";
-      document.body.style.overflow = "hidden";
-      document.body.style.marginRight = `${scrollWidth}px`;
+      let display;
+
+      document.querySelectorAll("[data-modal").forEach((item) => {
+        if (getComputedStyle(item).display !== "none") {
+          display = "block";
+        }
+      });
+
+      if (!display) {
+        document.querySelector(selector).style.display = "block";
+        document.body.style.overflow = "hidden";
+        document.body.style.marginRight = `${scrollWidth}px`;
+      }
     }, time);
   }
 
@@ -82,7 +92,7 @@ const modals = () => {
     false
   );
 
-  showModalOnTimer(".popup", 5000);
+  showModalOnTimer(".popup", 60000);
 };
 
 export default modals;
