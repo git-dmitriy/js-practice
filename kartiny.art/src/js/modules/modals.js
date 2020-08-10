@@ -1,7 +1,9 @@
 import getScrollbarWidth from "./getScrollbarWidth";
 
 const modals = () => {
-  let scrollWidth = getScrollbarWidth();
+  let scrollWidth = getScrollbarWidth(),
+    btnPressed = false;
+
   function bindModal(
     triggerSelector,
     modalSelector,
@@ -18,6 +20,7 @@ const modals = () => {
         if (e.target) {
           e.preventDefault();
         }
+        btnPressed = true;
 
         if (destroyTrigger) {
           item.remove();
@@ -70,6 +73,19 @@ const modals = () => {
       }
     }, time);
   }
+
+  function openByScroll(selector) {
+    window.addEventListener("scroll", () => {
+      if (
+        !btnPressed &&
+        window.pageYOffset + document.documentElement.clientHeight >=
+          document.documentElement.scrollHeight
+      ) {
+        document.querySelector(selector).click();
+      }
+    });
+  }
+
   bindModal(".button-design", ".popup-design", ".popup-design .popup-close");
   bindModal(
     ".button-consultation",
@@ -77,6 +93,8 @@ const modals = () => {
     ".popup-consultation .popup-close"
   );
   bindModal(".fixed-gift", ".popup-gift", ".popup-gift .popup-close", true);
+
+  openByScroll(".fixed-gift");
 
   showModalOnTimer(".popup-consultation", 5000);
 };
