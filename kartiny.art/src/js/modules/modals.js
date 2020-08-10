@@ -76,6 +76,7 @@ const modals = () => {
     ".popup-consultation",
     ".popup-consultation .popup-close"
   );
+  bindModal(".fixed-gift", ".popup-gift", ".popup-gift .popup-close", true);
 
   showModalOnTimer(".popup-consultation", 5000);
 };
