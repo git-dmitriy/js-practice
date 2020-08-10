@@ -6,7 +6,7 @@ const modals = () => {
     triggerSelector,
     modalSelector,
     closeSelector,
-    closeClickOverlay = true
+    destroyTrigger = false
   ) {
     const trigger = document.querySelectorAll(triggerSelector),
       modal = document.querySelector(modalSelector),
@@ -18,6 +18,11 @@ const modals = () => {
         if (e.target) {
           e.preventDefault();
         }
+
+        if (destroyTrigger) {
+          item.remove();
+        }
+
         windows.forEach((item) => {
           item.style.display = "none";
         });
@@ -37,7 +42,7 @@ const modals = () => {
       // document.body.classList.remove('modal-open');
     });
     modal.addEventListener("click", (e) => {
-      if (e.target === modal && closeClickOverlay) {
+      if (e.target === modal) {
         windows.forEach((item) => {
           item.style.display = "none";
         });
@@ -71,6 +76,7 @@ const modals = () => {
     ".popup-consultation",
     ".popup-consultation .popup-close"
   );
+
   showModalOnTimer(".popup-consultation", 5000);
 };
 
