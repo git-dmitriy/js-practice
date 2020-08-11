@@ -20,6 +20,7 @@ const modals = () => {
         if (e.target) {
           e.preventDefault();
         }
+
         btnPressed = true;
 
         if (destroyTrigger) {
@@ -28,6 +29,7 @@ const modals = () => {
 
         windows.forEach((item) => {
           item.style.display = "none";
+          item.classList.add("animated", "fadeIn");
         });
         modal.style.display = "block";
         document.body.style.overflow = "hidden";
