@@ -1,19 +1,22 @@
-import checkNumInputs from "./checkNumInputs";
-
-const forms = (state) => {
+const forms = () => {
   const form = document.querySelectorAll("form"),
     inputs = document.querySelectorAll("input");
-
-  checkNumInputs('input[name="user_phone');
 
   const message = {
     loading: "Загрузка...",
     success: "Спасибо, мы скоро свяжемся с вами",
     failure: "Что-то пошло не так...",
+    spinner: "./assets/img/spinner.gif",
+    fail: "assets/img/fail.png",
+    ok: "assets/img/ok.png",
+  };
+
+  const path = {
+    designer: "assets/server.php",
+    question: "assets/question.php",
   };
 
   const postData = async (url, data) => {
-    document.querySelector(".status").textContent = message.loading;
     let res = await fetch(url, {
       method: "POST",
       body: data,
@@ -27,12 +30,6 @@ const forms = (state) => {
     });
   };
 
-  const clearFormData = (formData) => {
-    for (let key in state) {
-      delete state[key];
-    }
-  };
-
   const closeModal = (selector) => {
     let modal = document.querySelector(selector);
     modal.style.display = "none";
@@ -44,36 +41,50 @@ const forms = (state) => {
 
       let statusMessage = document.createElement("div");
       statusMessage.classList.add("status");
-      item.appendChild(statusMessage);
+      item.parentNode.appendChild(statusMessage);
+
+      item.classList.add("animated", "fadeOutUp");
+      setTimeout(() => {
+        item.style.display = "none";
+      }, 400);
+
+      let statusImg = document.createElement("img");
+      statusImg.setAttribute("src", message.spinner);
+      statusImg.classList.add("animated", "fadeInUp");
+      statusMessage.appendChild(statusImg);
+
+      let textMessage = document.createElement("div");
+      textMessage.textContent = message.loading;
+      statusMessage.appendChild(textMessage);
 
       const formData = new FormData(item);
+      let api;
+      item.closest(".popup-design") || item.classList.contains("calc_form")
+        ? (api = path.designer)
+        : (api = path.question);
+      console.log(api);
 
-      if (item.getAttribute("data-calc") === "end") {
-        for (let key in state) {
-          formData.append(key, state[key]);
-        }
-      }
-      postData("assets/server.php", formData)
+      postData(api, formData)
         .then((res) => {
           console.log(res);
-          statusMessage.textContent = message.success;
+          statusImg.setAttribute("src", message.ok);
+          textMessage.textContent = message.success;
         })
         .catch((e) => {
-          statusMessage.textContent = message.failure;
-          console.log(e);
+          statusImg.setAttribute("src", message.fail);
+          textMessage.textContent = message.failure;
         })
         .finally(() => {
           clearInputs();
-          clearFormData(formData);
           setTimeout(() => {
             statusMessage.remove();
-            closeModal(".popup_calc_end");
-          }, 3000);
+            item.style.display = "block";
+            item.classList.remove("fadeOutUp");
+            item.classList.add("fadeInUp");
+          }, 5000);
         });
     });
   });
-
-  clearFormData(state);
 };
 
 export default forms;
