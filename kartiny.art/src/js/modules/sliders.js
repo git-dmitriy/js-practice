@@ -33,13 +33,13 @@ const sliders = (slides, dir, prev, next) => {
 
     prevBtn.addEventListener("click", () => {
       selectSlide(-1);
-      items[slideIndex - 1].classList.remove("slideInLeft");
-      items[slideIndex - 1].classList.add("slideInRight");
+      items[slideIndex - 1].classList.remove("slideInRight");
+      items[slideIndex - 1].classList.add("slideInLeft");
     });
     nextBtn.addEventListener("click", () => {
       selectSlide(1);
-      items[slideIndex - 1].classList.remove("slideInRight");
-      items[slideIndex - 1].classList.add("slideInLeft");
+      items[slideIndex - 1].classList.remove("slideInLeft");
+      items[slideIndex - 1].classList.add("slideInRight");
     });
   } catch (e) {}
 
