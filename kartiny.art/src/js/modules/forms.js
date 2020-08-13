@@ -1,6 +1,7 @@
 const forms = () => {
   const form = document.querySelectorAll("form"),
-    inputs = document.querySelectorAll("input");
+    inputs = document.querySelectorAll("input"),
+    upload = document.querySelectorAll("[name=upload]");
 
   const message = {
     loading: "Загрузка...",
@@ -28,12 +29,27 @@ const forms = () => {
     inputs.forEach((item) => {
       item.value = "";
     });
+    upload.forEach((item) => {
+      item.previousElementSibling.textContent = "Файл не выбран";
+    });
   };
 
   const closeModal = (selector) => {
     let modal = document.querySelector(selector);
     modal.style.display = "none";
   };
+
+  upload.forEach((item) => {
+    item.addEventListener("input", () => {
+      console.log(item.files[0]);
+      let dots;
+      const arr = item.files[0].name.split(".");
+
+      arr[0].length > 6 ? (dots = "...") : (dots = ".");
+      const name = arr[0].substring(0, 6) + dots + arr[1];
+      item.previousElementSibling.textContent = name;
+    });
+  });
 
   form.forEach((item) => {
     item.addEventListener("submit", (e) => {
