@@ -2,7 +2,12 @@ import getScrollbarWidth from "./getScrollbarWidth";
 
 const modals = () => {
   let scrollWidth = getScrollbarWidth(),
-    btnPressed = false;
+    btnPressed = false,
+    giftWidget = document.querySelector(".fixed-gift"),
+    giftWidgetWidth = window
+      .getComputedStyle(giftWidget, null)
+      .getPropertyValue("right")
+      .replace(/px/, "");
 
   function bindModal(
     triggerSelector,
@@ -34,6 +39,7 @@ const modals = () => {
         modal.style.display = "block";
         document.body.style.overflow = "hidden";
         document.body.style.marginRight = `${scrollWidth}px`;
+        giftWidget.style.right = `${+giftWidgetWidth + scrollWidth}px`;
       });
     });
 
@@ -44,7 +50,7 @@ const modals = () => {
       modal.style.display = "none";
       document.body.style.overflow = "";
       document.body.style.marginRight = "0px";
-      // document.body.classList.remove('modal-open');
+      giftWidget.style.right = "";
     });
     modal.addEventListener("click", (e) => {
       if (e.target === modal) {
@@ -54,7 +60,7 @@ const modals = () => {
         modal.style.display = "none";
         document.body.style.overflow = "";
         document.body.style.marginRight = "0px";
-        // document.body.classList.remove('modal-open');
+        giftWidget.style.right = "";
       }
     });
   }
@@ -72,6 +78,7 @@ const modals = () => {
         document.querySelector(selector).style.display = "block";
         document.body.style.overflow = "hidden";
         document.body.style.marginRight = `${scrollWidth}px`;
+        giftWidget.style.right = `${+giftWidgetWidth + scrollWidth}px`;
       }
     }, time);
   }
