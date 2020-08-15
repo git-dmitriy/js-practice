@@ -1,4 +1,4 @@
-const masks = (selector) => {
+const mask = (selector) => {
   let setCursorPosition = (pos, elem) => {
     elem.focus();
     if (elem.setSelectionRange) {
@@ -49,4 +49,4 @@ const masks = (selector) => {
   });
 };
 
-export default masks;
+export default mask;

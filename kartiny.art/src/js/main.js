@@ -1,7 +1,7 @@
 import modals from "./modules/modals";
 import sliders from "./modules/sliders";
 import forms from "./modules/forms";
-import masks from "./modules/masks";
+import mask from "./modules/mask";
 import checkTextInputs from "./modules/checkTextInputs";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   sliders(".feedback-slider-item", "", ".main-prev-btn", ".main-next-btn");
   sliders(".main-slider-item", "vertical");
   forms();
-  masks("[name='phone']");
+  mask("[name='phone']");
   checkTextInputs('[name="name"]');
   checkTextInputs('[name="message"]');
 });
