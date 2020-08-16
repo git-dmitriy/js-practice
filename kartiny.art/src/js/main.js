@@ -3,8 +3,7 @@ import sliders from "./modules/sliders";
 import forms from "./modules/forms";
 import mask from "./modules/mask";
 import checkTextInputs from "./modules/checkTextInputs";
-import showMoreStyles from './modules/showMoreStyles';
-
+import showMoreStyles from "./modules/showMoreStyles";
 
 document.addEventListener("DOMContentLoaded", () => {
   "use strict";
@@ -16,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   mask("[name='phone']");
   checkTextInputs('[name="name"]');
   checkTextInputs('[name="message"]');
-  showMoreStyles('.button-styles', '.styles-2');
+  showMoreStyles(".button-styles", "#styles .row");
 });
 
 // + TODO Убрать эффект смещения виджета подарка при открытии и закрытии модальных окон.
@@ -25,3 +24,5 @@ document.addEventListener("DOMContentLoaded", () => {
 // TODO Пофиксить баг с focus в chrome
 // TODO Исключить появление модальных окон при заполнении форм
 // todo Исключить возможность заполнения текстовых форм автозаполнением английскими буквами
+
+// todo Добавить обработку исключения при недоступности "базы данных" в модуле подгрузки данных
