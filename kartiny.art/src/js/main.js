@@ -4,6 +4,7 @@ import forms from "./modules/forms";
 import mask from "./modules/mask";
 import checkTextInputs from "./modules/checkTextInputs";
 import showMoreStyles from "./modules/showMoreStyles";
+import calc from "./modules/calc";
 
 document.addEventListener("DOMContentLoaded", () => {
   "use strict";
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   checkTextInputs('[name="name"]');
   checkTextInputs('[name="message"]');
   showMoreStyles(".button-styles", "#styles .row");
+  calc("#size", "#material", "#options", ".promocode", ".calc-price");
 });
 
 // + TODO Убрать эффект смещения виджета подарка при открытии и закрытии модальных окон.
@@ -25,4 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // TODO Исключить появление модальных окон при заполнении форм
 // todo Исключить возможность заполнения текстовых форм автозаполнением английскими буквами
 
+// todo исправить запрос на server.php
+
 // todo Добавить обработку исключения при недоступности "базы данных" в модуле подгрузки данных
+
+// todo Добавить в стоимость портрета при отправки формы
