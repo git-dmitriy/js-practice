@@ -5,6 +5,7 @@ import mask from "./modules/mask";
 import checkTextInputs from "./modules/checkTextInputs";
 import showMoreStyles from "./modules/showMoreStyles";
 import calc from "./modules/calc";
+import filter from "./modules/filter";
 
 document.addEventListener("DOMContentLoaded", () => {
   "use strict";
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   checkTextInputs('[name="message"]');
   showMoreStyles(".button-styles", "#styles .row");
   calc("#size", "#material", "#options", ".promocode", ".calc-price");
+  filter();
 });
 
 // + TODO Убрать эффект смещения виджета подарка при открытии и закрытии модальных окон.
@@ -32,3 +34,5 @@ document.addEventListener("DOMContentLoaded", () => {
 // todo Добавить обработку исключения при недоступности "базы данных" в модуле подгрузки данных
 
 // todo Добавить в стоимость портрета при отправки формы
+
+// todo Реализовать подгрузку данных для калькулятора.
