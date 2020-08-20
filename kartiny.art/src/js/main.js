@@ -6,6 +6,7 @@ import checkTextInputs from "./modules/checkTextInputs";
 import showMoreStyles from "./modules/showMoreStyles";
 import calc from "./modules/calc";
 import filter from "./modules/filter";
+import pictureSize from "./modules/pictureSize";
 
 document.addEventListener("DOMContentLoaded", () => {
   "use strict";
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   showMoreStyles(".button-styles", "#styles .row");
   calc("#size", "#material", "#options", ".promocode", ".calc-price");
   filter();
+  pictureSize(".sizes-block");
 });
 
 // + TODO Убрать эффект смещения виджета подарка при открытии и закрытии модальных окон.
