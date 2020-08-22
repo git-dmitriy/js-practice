@@ -3,6 +3,12 @@ const accordion = (triggersSelector) => {
 
   btns.forEach((btn) => {
     btn.addEventListener("click", function () {
+      btns.forEach((item) => {
+        item.classList.remove("active-style");
+        item.nextElementSibling.classList.remove("active-content");
+        item.nextElementSibling.style.maxHeight = "0";
+      });
+
       this.classList.toggle("active-style");
       this.nextElementSibling.classList.toggle("active-content");
 
