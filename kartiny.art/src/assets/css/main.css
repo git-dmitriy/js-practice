@@ -1071,9 +1071,20 @@ h1, h2, h3, h4 {
 }
 
 .often-questions .accordion-block {
-  display: none;
-  margin-top: 1rem;
   background-color: #f7e7e6;
+  max-height: 0;
+  opacity: 0;
+  transition: .2s all ease-out;
+  overflow: hidden;
+  /* display: none; */
+  /* margin-top: 1rem; */
+  /* padding: 3rem 4rem; */
+}
+
+.often-questions .accordion-block.active-content {
+  overflow: visible;
+  opacity: 1;
+  margin-top: 1rem;
   padding: 3rem 4rem;
 }
 
