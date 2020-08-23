@@ -407,6 +407,10 @@ h1, h2, h3, h4 {
   margin-bottom: 7rem;
 }
 
+.main-slider img {
+  width: 100%;
+}
+
 .main-slider-btn {
   position: absolute;
   top: 50%;
@@ -983,6 +987,10 @@ h1, h2, h3, h4 {
 
 .feedback-slider-item {
   padding-bottom: 5rem;
+}
+
+.feedback-slider-item img {
+  width: 100%;
 }
 
 .feedback-block {
