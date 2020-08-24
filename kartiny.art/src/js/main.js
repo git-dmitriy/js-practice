@@ -10,6 +10,7 @@ import pictureSize from "./modules/pictureSize";
 import accordion from "./modules/accordion";
 import burger from "./modules/burger";
 import scrolling from "./modules/scrolling";
+import dragNdrop from "./modules/dragNdrop";
 
 document.addEventListener("DOMContentLoaded", () => {
   "use strict";
@@ -27,7 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
   pictureSize(".sizes-block");
   accordion(".accordion-heading");
   burger(".burger-menu", ".burger");
-  scrolling('.pageup');
+  scrolling(".pageup");
+  dragNdrop();
 });
 
 // + TODO Убрать эффект смещения виджета подарка при открытии и закрытии модальных окон.
@@ -46,6 +48,5 @@ document.addEventListener("DOMContentLoaded", () => {
 // todo Реализовать подгрузку данных для калькулятора.
 
 // +todo Модернизировать код js чтобы в один момент времени можно было открыть только один аккордеон
-
 
 // todo Определить почему не сработал window.screen.availWidth;
