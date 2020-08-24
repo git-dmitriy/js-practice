@@ -68,7 +68,7 @@ const modals = () => {
     setTimeout(function () {
       let display;
 
-      document.querySelectorAll("[data-modal").forEach((item) => {
+      document.querySelectorAll("[data-modal]").forEach((item) => {
         if (getComputedStyle(item).display !== "none") {
           display = "block";
         }
@@ -109,7 +109,7 @@ const modals = () => {
 
   openByScroll(".fixed-gift");
 
-  showModalOnTimer(".popup-consultation", 5000);
+  showModalOnTimer(".popup-consultation", 60000);
 };
 
 export default modals;
