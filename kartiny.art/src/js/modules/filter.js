@@ -63,7 +63,7 @@ const filter = () => {
     typeFilter();
   });
 
-  btnGrandmother.addEventListener("click", () => {
+  btnGranddad.addEventListener("click", () => {
     typeFilter();
   });
 
