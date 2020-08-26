@@ -6,7 +6,7 @@ export default class Slider {
     this.slideIndex = 1;
   }
 
-  showSlides(n) {
+  showSlides(n, direction) {
     if (n > this.slides.length) {
       this.slideIndex = 1;
     }
@@ -16,25 +16,44 @@ export default class Slider {
 
     this.slides.forEach((slide) => {
       slide.style.display = "none";
+      slide.classList.add("animated");
     });
 
     this.slides[this.slideIndex - 1].style.display = "block";
+
+    if (direction === "down") {
+      this.slides[this.slideIndex - 1].classList.add("fadeInUp");
+      this.slides[this.slideIndex - 1].addEventListener("animationend", () => {
+        this.slides[this.slideIndex - 1].classList.remove("fadeInUp");
+      });
+    }
+    if (direction === "up") {
+      this.slides[this.slideIndex - 1].classList.add("fadeInDown");
+      this.slides[this.slideIndex - 1].addEventListener("animationend", () => {
+        this.slides[this.slideIndex - 1].classList.remove("fadeInDown");
+      });
+    }
   }
 
-  plusSlides(n) {
-    this.showSlides((this.slideIndex += n));
+  plusSlides(n, direction) {
+    // if (n > this.n) {
+
+    // }
+
+    this.showSlides((this.slideIndex += n), direction);
   }
 
   render() {
+    // this.showSlides(1, "up");
     this.btns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        this.plusSlides(1);
+        this.plusSlides(1, "down");
       });
 
       btn.parentNode.previousElementSibling.addEventListener("click", (e) => {
         e.preventDefault();
         this.slideIndex = 1;
-        this.showSlides(this.slideIndex);
+        this.showSlides(this.slideIndex, "up");
       });
     });
 
