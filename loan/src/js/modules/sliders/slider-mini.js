@@ -26,6 +26,14 @@ export default class Minislider extends Slider {
     }
   }
 
+  autoScrolll() {
+    if (this.autoPlay) {
+      setInterval(() => {
+        this.next.click();
+      }, 5000);
+    }
+  }
+
   bindTriggers() {
     this.next.addEventListener("click", () => {
       if (
