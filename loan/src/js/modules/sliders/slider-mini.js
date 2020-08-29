@@ -5,7 +5,7 @@ export default class Minislider extends Slider {
     super(container, next, prev, activeClass, animate, autoPlay);
   }
 
-  decorized() {
+  decorizeSlider() {
     this.slides.forEach((slide) => {
       slide.classList.remove(this.activeClass);
       if (this.animate) {
@@ -14,7 +14,11 @@ export default class Minislider extends Slider {
         slide.querySelector(".card__controls-arrow").style.opacity = ".4";
       }
     });
-    this.slides[0].classList.add(this.activeClass);
+
+    if (!this.slides[0].closest("button")) {
+      this.slides[0].classList.add(this.activeClass);
+    }
+
     if (this.animate) {
       this.slides[0].querySelector(".card__controls").style.opacity = "1";
       this.slides[0].querySelector(".card__title").style.opacity = "1";
@@ -24,14 +28,33 @@ export default class Minislider extends Slider {
 
   bindTriggers() {
     this.next.addEventListener("click", () => {
-      this.container.appendChild(this.slides[0]);
-      this.decorized();
+      if (
+        this.slides[1].tagName == "BUTTON" &&
+        this.slides[2].tagName == "BUTTON"
+      ) {
+        this.container.appendChild(this.slides[0]); // slide
+        this.container.appendChild(this.slides[0]); // button
+        this.container.appendChild(this.slides[0]); // button
+        this.decorizeSlider();
+      } else if (this.slides[1].tagName == "BUTTON") {
+        this.container.appendChild(this.slides[0]);
+        this.container.appendChild(this.slides[1]);
+        this.decorizeSlider();
+      } else {
+        this.container.appendChild(this.slides[0]);
+        this.decorizeSlider();
+      }
     });
 
     this.prev.addEventListener("click", () => {
-      let active = this.slides[this.slides.length - 1];
-      this.container.insertBefore(active, this.slides[0]);
-      this.decorized();
+      for (let i = this.slides.length - 1; i > 0; i--) {
+        if (this.slides[i].tagName !== "BUTTON") {
+          let active = this.slides[i];
+          this.container.insertBefore(active, this.slides[0]);
+          this.decorizeSlider();
+          break;
+        }
+      }
     });
   }
 
@@ -43,6 +66,6 @@ export default class Minislider extends Slider {
       align-items: flex-start;
     `;
     this.bindTriggers();
-    this.decorized();
+    this.decorizeSlider();
   }
 }
