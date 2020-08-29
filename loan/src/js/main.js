@@ -21,8 +21,10 @@ window.addEventListener("DOMContentLoaded", () => {
     next: ".modules__info-btns .slick-next",
     activeClass: "card-active",
     animate: true,
+    autoPlay: true,
   });
   modulesSlider.init();
+  modulesSlider.autoScrolll();
 
   const feedSlider = new MiniSlider({
     container: ".feed__slider",
