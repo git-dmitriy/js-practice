@@ -1,12 +1,31 @@
 export default class Form {
   constructor(forms) {
     this.forms = document.querySelectorAll(forms);
+    this.inputs = document.querySelectorAll("input");
     this.message = {
       loading: "Загрузка...",
       success: "Спасибо, мы скоро с вами свяжемся",
       failure: "Что-то пошло не так...",
     };
     this.path = "assets/question.php";
+  }
+
+  clearInputs() {
+    this.inputs.forEach((input) => {
+      input.value = "";
+    });
+  }
+
+  checkMailInputs() {
+    const mailInputs = document.querySelectorAll("[type=email");
+
+    mailInputs.forEach((input) => {
+      input.addEventListener("keypress", function (e) {
+        if (e.key.match(/[^a-z 0-9 @ \.]/gi)) {
+          e.preventDefault();
+        }
+      });
+    });
   }
 
   async postData(url, data) {
@@ -18,11 +37,13 @@ export default class Form {
   }
 
   init() {
+    this.checkMailInputs();
     this.forms.forEach((form) => {
       form.addEventListener("submit", (e) => {
         e.preventDefault();
 
         let statusMessage = document.createElement("div");
+        statusMessage.classList.add("statusMessage");
         statusMessage.style.cssText = `
           margin-top: 15px;
           font-size: 18px;
@@ -41,6 +62,12 @@ export default class Form {
           })
           .catch(() => {
             statusMessage.textContent = this.message.failure;
+          })
+          .finally(() => {
+            this.clearInputs();
+            setTimeout(() => {
+              statusMessage.remove();
+            }, 6000);
           });
       });
     });
