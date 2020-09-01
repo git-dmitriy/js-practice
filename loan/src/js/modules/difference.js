@@ -9,36 +9,20 @@ export default class Difference {
     this.oldCounter = 0;
   }
 
-  bindTriggers() {
-    this.officerOld.querySelector(".plus").addEventListener("click", () => {
-      if (this.oldCounter !== this.oldItems.length - 2) {
-        this.oldItems[this.oldCounter].style.display = "flex";
-        this.oldCounter++;
+  bindTriggers(container, items, counter) {
+    container.querySelector(".plus").addEventListener("click", () => {
+      if (counter !== items.length - 2) {
+        items[counter].style.display = "flex";
+        counter++;
       } else {
-        this.oldItems[this.oldCounter].style.display = "flex";
-        this.oldItems[this.oldItems.length - 1].remove();
-      }
-    });
-
-    this.officerNew.querySelector(".plus").addEventListener("click", () => {
-      if (this.newCounter !== this.newItems.length - 2) {
-        this.newItems[this.newCounter].style.display = "flex";
-        this.newCounter++;
-      } else {
-        this.newItems[this.newCounter].style.display = "flex";
-        this.newItems[this.newItems.length - 1].remove();
+        items[counter].style.display = "flex";
+        items[items.length - 1].remove();
       }
     });
   }
 
-  hideItems() {
-    this.oldItems.forEach((item, i, arr) => {
-      if (i !== arr.length - 1) {
-        item.style.display = "none";
-      }
-    });
-
-    this.newItems.forEach((item, i, arr) => {
+  hideItems(items) {
+    items.forEach((item, i, arr) => {
       if (i !== arr.length - 1) {
         item.style.display = "none";
       }
@@ -46,7 +30,9 @@ export default class Difference {
   }
 
   init() {
-    this.hideItems();
-    this.bindTriggers();
+    this.hideItems(this.oldItems);
+    this.hideItems(this.newItems);
+    this.bindTriggers(this.officerOld, this.oldItems, this.oldCounter);
+    this.bindTriggers(this.officerNew, this.newItems, this.newCounter);
   }
 }
