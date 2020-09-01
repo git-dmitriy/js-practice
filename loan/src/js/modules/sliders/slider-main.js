@@ -30,6 +30,7 @@ export default class MainSlider extends Slider {
     this.slides.forEach((slide) => {
       slide.style.display = "none";
       slide.classList.add("animated");
+      slide.style.setProperty("animation-duration", ".5s");
     });
 
     this.slides[this.slideIndex - 1].style.display = "block";
