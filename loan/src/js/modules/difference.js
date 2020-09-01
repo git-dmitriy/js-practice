@@ -13,9 +13,13 @@ export default class Difference {
     container.querySelector(".plus").addEventListener("click", () => {
       if (counter !== items.length - 2) {
         items[counter].style.display = "flex";
+        items[counter].style.setProperty('animation-duration', '0.3s');
+        items[counter].classList.add('animated', 'fadeInDown');
         counter++;
       } else {
         items[counter].style.display = "flex";
+        items[counter].style.setProperty('animation-duration', '0.3s');
+        items[counter].classList.add('animated', 'fadeInDown');
         items[items.length - 1].remove();
       }
     });
