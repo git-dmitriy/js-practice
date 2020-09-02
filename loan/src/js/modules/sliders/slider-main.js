@@ -53,41 +53,47 @@ export default class MainSlider extends Slider {
     this.showSlides((this.slideIndex += n), direction);
   }
 
+  bindTriggers() {
+    this.btns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        this.plusSlides(1, "down");
+      });
+
+      btn.parentNode.previousElementSibling.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.slideIndex = 1;
+        this.showSlides(this.slideIndex, "up");
+      });
+    });
+
+    // todo Перенести в класс слайдера
+
+    document.querySelectorAll(".prevmodule").forEach((item) => {
+      item.addEventListener("click", (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        this.plusSlides(-1, "down");
+      });
+    });
+
+    document.querySelectorAll(".nextmodule").forEach((item) => {
+      item.addEventListener("click", (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        this.plusSlides(1, "up");
+      });
+    });
+
+    // todo ====================================
+  }
+
   render() {
     if (this.container) {
       try {
         this.hanson = document.querySelector(".hanson");
       } catch (e) {}
-
-      this.btns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          this.plusSlides(1, "down");
-        });
-
-        btn.parentNode.previousElementSibling.addEventListener("click", (e) => {
-          e.preventDefault();
-          this.slideIndex = 1;
-          this.showSlides(this.slideIndex, "up");
-        });
-      });
-
+      this.bindTriggers();
       this.showSlides(this.slideIndex);
-
-      document.querySelectorAll(".prevmodule").forEach((item) => {
-        item.addEventListener("click", (e) => {
-          e.stopPropagation();
-          e.preventDefault();
-          this.plusSlides(-1, "down");
-        });
-      });
-
-      document.querySelectorAll(".nextmodule").forEach((item) => {
-        item.addEventListener("click", (e) => {
-          e.stopPropagation();
-          e.preventDefault();
-          this.plusSlides(1, "up");
-        });
-      });
     }
   }
 }
