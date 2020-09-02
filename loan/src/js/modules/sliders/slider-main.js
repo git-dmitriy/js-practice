@@ -74,13 +74,17 @@ export default class MainSlider extends Slider {
       this.showSlides(this.slideIndex);
 
       document.querySelectorAll(".prevmodule").forEach((item) => {
-        item.addEventListener("click", () => {
+        item.addEventListener("click", (e) => {
+          e.stopPropagation();
+          e.preventDefault();
           this.plusSlides(-1, "down");
         });
       });
 
       document.querySelectorAll(".nextmodule").forEach((item) => {
-        item.addEventListener("click", () => {
+        item.addEventListener("click", (e) => {
+          e.stopPropagation();
+          e.preventDefault();
           this.plusSlides(1, "up");
         });
       });
