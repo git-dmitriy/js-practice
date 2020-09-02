@@ -26,7 +26,6 @@ window.addEventListener("DOMContentLoaded", () => {
     autoPlay: true,
   });
   modulesSlider.init();
-  modulesSlider.autoScrolll();
 
   const feedSlider = new MiniSlider({
     container: ".feed__slider",
@@ -46,5 +45,7 @@ new Difference(".officerold", ".officernew", ".officer__card-item").init();
 
 new Forms(".form").init();
 // * Добавить фильтрацию для третьего слайдера
+
+//  todo Добавить правильную анимацию при возвращении на первый экран по стрелке вниз
 
 // todo Отключать автовоспроизведение слайдера
