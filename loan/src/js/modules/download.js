@@ -18,8 +18,9 @@ export default class Download {
 
   init() {
     this.btns.forEach((btn) => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (e) => {
         this.downloadItem(this.path);
+        e.stopPropagation();
       });
     });
   }
