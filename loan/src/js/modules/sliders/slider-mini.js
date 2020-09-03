@@ -28,7 +28,16 @@ export default class Minislider extends Slider {
 
   autoScrolll() {
     if (this.autoPlay) {
-      setInterval(() => {
+      this.container.addEventListener("mouseenter", () => {
+        clearInterval(timer);
+      });
+
+      this.container.addEventListener("mouseleave", () => {
+        timer = setInterval(() => {
+          this.next.click();
+        }, 5000);
+      });
+      let timer = setInterval(() => {
         this.next.click();
       }, 5000);
     }
