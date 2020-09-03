@@ -1,8 +1,8 @@
 import Slider from "./slider";
 
 export default class MainSlider extends Slider {
-  constructor(btns) {
-    super(btns);
+  constructor(btns, multipleNext, multiplePrev) {
+    super(btns, multipleNext, multiplePrev);
   }
 
   showSlides(n, direction) {
@@ -66,9 +66,7 @@ export default class MainSlider extends Slider {
       });
     });
 
-    // todo Перенести в класс слайдера
-
-    document.querySelectorAll(".prevmodule").forEach((item) => {
+    this.multiplePrev.forEach((item) => {
       item.addEventListener("click", (e) => {
         e.stopPropagation();
         e.preventDefault();
@@ -76,15 +74,13 @@ export default class MainSlider extends Slider {
       });
     });
 
-    document.querySelectorAll(".nextmodule").forEach((item) => {
+    this.multipleNext.forEach((item) => {
       item.addEventListener("click", (e) => {
         e.stopPropagation();
         e.preventDefault();
         this.plusSlides(1, "up");
       });
     });
-
-    // todo ====================================
   }
 
   render() {

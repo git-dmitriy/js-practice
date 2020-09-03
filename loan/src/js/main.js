@@ -11,6 +11,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const secondPageSlider = new MainSlider({
     container: ".moduleapp",
     btns: ".next",
+    multiplePrev: ".prevmodule",
+    multipleNext: ".nextmodule",
   });
   secondPageSlider.render();
 
