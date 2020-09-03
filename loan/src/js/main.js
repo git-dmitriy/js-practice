@@ -43,15 +43,14 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   feedSlider.init();
 
-  const player = new VideoPlayer(".showup .play", ".overlay");
-  player.init();
+  new VideoPlayer(".showup .play", ".overlay").init();
+  new VideoPlayer(".module__video-item .play", ".overlay").init();
+
+  new Difference(".officerold", ".officernew", ".officer__card-item").init();
+
+  new Forms(".form").init();
 });
 
-// const defference = new Difference();
-
-new Difference(".officerold", ".officernew", ".officer__card-item").init();
-
-new Forms(".form").init();
 // * Добавить фильтрацию для третьего слайдера
 
 //  todo Добавить правильную анимацию при возвращении на первый экран по стрелке вниз
