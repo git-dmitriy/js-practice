@@ -4,11 +4,14 @@ export default class ShowInfo {
   }
 
   init() {
-    this.btns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        btn.closest(".module__info-show").nextElementSibling.style.display =
-          "block";
+    try {
+      this.btns.forEach((btn) => {
+        const sibling = btn.closest(".module__info-show").nextElementSibling;
+        btn.addEventListener("click", () => {
+          sibling.style.marginTop = "20px";
+          sibling.classList.toggle("msg");
+        });
       });
-    });
+    } catch (e) {}
   }
 }
