@@ -1,25 +1,19 @@
-(() => {
-  const $ = function (selector) {
-    const elements = document.querySelectorAll(selector);
-    console.log(elements);
+const $ = function (selector) {
+  return new $.prototype.init(selector);
+};
 
-    const obj = {};
+$.prototype.init = function (selector) {
+  if (!selector) {
+    return this; // {}
+  }
 
-    obj.hide = () => {
-      elements.forEach((element) => {
-        element.style.display = "none";
-      });
-      return obj;
-    };
+  Object.assign(this, document.querySelectorAll(selector));
+  this.length = document.querySelectorAll(selector).length;
+  return this;
+};
 
-    obj.show = () => {
-      elements.forEach((element) => {
-        element.style.display = "";
-      });
-      return obj;
-    };
+$.prototype.init.prototype = $.prototype;
 
-    return obj;
-  };
-  window.$ = $;
-})();
+window.$ = $;
+
+export default $;
