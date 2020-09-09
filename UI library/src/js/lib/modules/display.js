@@ -1,11 +1,11 @@
 import $ from "../core";
 
-$.prototype.show = function () {
+$.prototype.show = function (model = "") {
   for (let i = 0; i < this.length; i++) {
     if (!this[i].style) {
       continue;
     }
-    this[i].style.display = '';
+    this[i].style.display = model;
   }
   return this;
 };
