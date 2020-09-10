@@ -1,6 +1,6 @@
 import $ from "../core";
 
-$.prototype.show = function (model = "") {
+$.prototype.show = function (model = "block") {
   for (let i = 0; i < this.length; i++) {
     if (!this[i].style) {
       continue;
@@ -20,14 +20,14 @@ $.prototype.hide = function () {
   return this;
 };
 
-$.prototype.toggle = function () {
+$.prototype.toggle = function (model = "block") {
   for (let i = 0; i < this.length; i++) {
     if (!this[i].style) {
       continue;
     }
 
     if (this[i].style.display === "none") {
-      this[i].style.display = "block";
+      this[i].style.display = model;
     }
     this[i].style.display = "none";
   }
