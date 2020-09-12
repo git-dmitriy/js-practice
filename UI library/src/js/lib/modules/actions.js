@@ -10,3 +10,15 @@ $.prototype.html = function (content) {
   }
   return this;
 };
+
+$.prototype.eq = function (i) {
+  const swap = this[i];
+  const objLength = Object.keys(this).length;
+
+  for (let i = 0; i < objLength; i++) {
+    delete this[i];
+  }
+  this[0] = swap;
+  this.length = 1;
+  return this;
+};
