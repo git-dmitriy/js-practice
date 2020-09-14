@@ -1,5 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import "./general/base.scss";
+@import "./general/variables.scss";
+@import "./general/typography.scss";
+@import "./components/ui-components.scss";
+@import "./helpers/classes.scss";
