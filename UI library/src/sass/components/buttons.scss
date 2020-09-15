@@ -12,6 +12,7 @@
   font-size: 14px;
   line-height: 1.5;
   transition: 0.3s;
+  text-decoration: none;
   &:hover {
     background-color: lighten($primary, 10%);
     color: #fff;
