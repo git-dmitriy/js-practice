@@ -1,6 +1,6 @@
 import $ from "../core";
 
-$.prototype.modal = function () {
+$.prototype.modal = function (created) {
   for (let i = 0; i < this.length; i++) {
     const target = this[i].getAttribute("data-target");
 
@@ -10,22 +10,33 @@ $.prototype.modal = function () {
       document.body.style.overflow = "hidden";
       document.body.style.marginRight = `${_scrollWidth()}px`;
     });
-  }
-  const closeElements = document.querySelectorAll("[data-close]");
-  closeElements.forEach((element) => {
-    $(element).click(() => {
-      $(".modal").fadeOut(500);
-      document.body.style.overflow = "";
-      document.body.style.marginRight = "";
+
+    const closeElements = document.querySelectorAll(`${target} [data-close]`);
+
+    closeElements.forEach((element) => {
+      $(element).click(() => {
+        $(target).fadeOut(500);
+        document.body.style.overflow = "";
+        document.body.style.marginRight = "";
+
+        if (created) {
+          document.querySelector(target).remove();
+        }
+      });
     });
-  });
-  $(".modal").click((e) => {
-    if (e.target.classList.contains("modal")) {
-      $(".modal").fadeOut(500);
-      document.body.style.overflow = "";
-      document.body.style.marginRight = "";
-    }
-  });
+
+    $(target).click((e) => {
+      if (e.target.classList.contains("modal")) {
+        $(target).fadeOut(500);
+        document.body.style.overflow = "";
+        document.body.style.marginRight = "";
+
+        if (created) {
+          document.querySelector(target).remove();
+        }
+      }
+    });
+  }
 };
 
 $.prototype.createModal = function ({ text, btns } = {}) {
@@ -36,7 +47,6 @@ $.prototype.createModal = function ({ text, btns } = {}) {
 
     // btns = {count: num, settings: [[text, classNames=[], close, cb]]}
 
-    console.log(btns);
     const buttons = []; // todo Использовать деструктуризацию
     for (let j = 0; j < btns.count; j++) {
       let btn = document.createElement("button");
@@ -49,6 +59,7 @@ $.prototype.createModal = function ({ text, btns } = {}) {
       if (btns.settings[j][3] && typeof btns.settings[j][3] === "function") {
         btn.addEventListener("click", btns.settings[j][3]);
       }
+
       buttons.push(btn);
     }
 
@@ -70,7 +81,8 @@ $.prototype.createModal = function ({ text, btns } = {}) {
     `;
     modal.querySelector(".modal-footer").append(...buttons);
     document.body.appendChild(modal);
-    $(this[i]).modal();
+
+    $(this[i]).modal(true);
     $(this[i].getAttribute("data-target")).fadeIn(500);
   }
 };
