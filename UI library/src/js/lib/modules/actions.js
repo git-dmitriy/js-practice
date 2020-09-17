@@ -91,7 +91,7 @@ $.prototype.siblings = function () {
     const arr = copyObj[i].parentNode.children;
 
     for (let j = 0; j < arr.length; j++) {
-      if (copyObj[j] === arr[j]) {
+      if (copyObj[i] === arr[j]) {
         continue;
       }
       this[counter] = arr[j];
