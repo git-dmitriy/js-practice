@@ -1,8 +1,6 @@
 import $ from "../core";
 
 $.prototype.tab = function () {
-  console.log(this);
-
   for (let i = 0; i < this.length; i++) {
     $(this[i]).on("click", () => {
       $(this[i])
