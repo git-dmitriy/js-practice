@@ -49,6 +49,8 @@ $.prototype.fadeOut = function (dur, fin) {
   return this;
 };
 
+// ! Переписать эту часть кода
+
 $.prototype.fadeToggle = function (dur, display, fin) {
   for (let i = 0; i < this.length; i++) {
     if (window.getComputedStyle(this[i]).display === "none") {
