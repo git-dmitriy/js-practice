@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+
+}
+
+* {
+  box-sizing: border-box;
+  margin-top: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+dd{
+  margin: 0;
+}
+
+a {
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}
+p {
+  margin: 0;
+}
+
+.container {
+  max-width:960px;
+  width: 100%;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
