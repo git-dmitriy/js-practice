@@ -1,0 +1,40 @@
+.header {
+  margin-bottom: 50px;
+}
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  padding-top: 20px;
+}
+.header__logo-link {
+  width: 251px;
+  position: relative;
+  top: 5px;
+  margin-right: 126px;
+}
+.header__logo-img {
+}
+.header__dealler {
+  @include font(12px, 28px, 500);
+  text-align: center;
+}
+.header__dealler-companies {
+  display: block;
+  @include font(18px, 18px, 700);
+  letter-spacing: 1px;
+}
+.header__phone-col {
+  margin-left: auto;
+}
+.header__phone-link {
+  display: block;
+  text-decoration: none;
+  @include font(18px, 18px, 700);
+  color: #fff;
+  margin-bottom: 7px;
+}
+
+.header__button {
+  margin-left: 10px;
+}
