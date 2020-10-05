@@ -10,7 +10,7 @@ html(lang="ru")
     header
       .container
         a.header__logo-link(href="#")
-          img.hedaer__logo-img(src="" alt="")
+          img.hedaer__logo-img(src="./img/logo-header.png" alt="")
         p.header__dealler.
           Официальный представитель
           #[span Garmin, Polar, Suunto]
@@ -18,5 +18,26 @@ html(lang="ru")
           a.header__phone-link(href="tel:+74999228974") +7 (499) 922-98-74
           button.button Заказать звонок
     section.promo
+      h1.promo__heading.
+        Подбор пульсометра
+        #[span с учётом Вашего уровня подготовки]
+      ul.promo__features-list
+        li.promo__features-item
+          img.promo__features-img(src="./img/timer-icon.png" alt="")
+          p.promo__features-desc.
+            Время подбора: #[br] 10 минут
 
+        li.promo__features-item
+          img.promo__features-img(src="./img/delivery-icon.png" alt="")
+          p.promo__features-desc.
+            Бесплатная #[br] доставка
+
+        li.promo__features-item
+          img.promo__features-img(src="./img/messages-icon.png" alt="")
+          p.promo__features-desc.
+            Ответим #[br] на все вопросы
+
+      button.button.button заказать консультацию
+      p.promo__desc.
+        или #[a.header__catalog-link(href="#") перейти в каталог]
     main
