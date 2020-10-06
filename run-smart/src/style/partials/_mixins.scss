@@ -1,5 +1,10 @@
-@mixin font($size, $ln_height, $font_weight) {
-  font-size: $size;
-  line-height: $ln_height;
-  font-weight: $font_weight;
+
+@mixin font($size, $ln-height, $font-weight) {
+  font-size: rem($size);
+  line-height: rem($ln-height);
+  font-weight: $font-weight;
+}
+
+@function rem($size) {
+  @return $size / $root-font-size * 1rem;
 }
