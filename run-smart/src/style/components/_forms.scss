@@ -1,0 +1,26 @@
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+.feedback-form__input {
+  min-height: 50px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 14px;
+  padding: 0px 20px;
+  @include font(14px, 14px, 300);
+}
+.feedback-form__input:nth-last-child(2) {
+  margin-bottom: 23px;
+}
+.feedback-form__submit {
+  background-color: $red;
+  border-radius: 5px;
+  border: none;
+  box-shadow: none;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 18px 44px;
+  @include font(16px, 16px, 500);
+}
