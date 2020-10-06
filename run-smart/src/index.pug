@@ -6,75 +6,106 @@ html(lang="ru")
     link(rel="stylesheet" href="css/main.css")
     title RunSmart | Подбор пульсометра
   body
-  .promo__wrapper_bg
-    header.header
-      .container.header__wrapper
-        a.header__logo-link(href="#")
-          img.hedaer__logo-img(src="img/logo-header.png" alt="")
-        p.header__dealler.
-          Официальный представитель
-          #[span.header__dealler-companies Garmin, Polar, Suunto]
-        .header__phone-col
-          a.header__phone-link(href="tel:+74999228974") +7 (499) 922-98-74
-          button.button.header__button Заказать звонок
-    section.promo
-      .container.promo__wrapper    
-        h1.promo__heading.
-          Подбор пульсометра
-          #[span.promo__heading.promo__heading_small с учётом Вашего уровня подготовки]
-        ul.promo__features-list
-          li.promo__features-item
-            .promo__features-img-wrap
-              img.promo__features-img(src="img/timer-icon.png" alt="")
-            p.promo__features-desc.
-              Время подбора: #[br] 10 минут
+    .promo__wrapper_bg
+      header.header
+        .container.header__wrapper
+          a.header__logo-link(href="#")
+            img.hedaer__logo-img(src="img/logo-header.png" alt="")
+          p.header__dealler.
+            Официальный представитель
+            #[span.header__dealler-companies Garmin, Polar, Suunto]
+          .header__phone-col
+            a.header__phone-link(href="tel:+74999228974") +7 (499) 922-98-74
+            button.button.header__button Заказать звонок
+      section.promo
+        .container.promo__wrapper    
+          h1.promo__heading.
+            Подбор пульсометра
+            #[span.promo__heading.promo__heading_small с учётом Вашего уровня подготовки]
+          ul.promo__features-list
+            li.promo__features-item
+              .promo__features-img-wrap
+                img.promo__features-img(src="img/timer-icon.png" alt="")
+              p.promo__features-desc.
+                Время подбора: #[br] 10 минут
 
-          li.promo__features-item
-            .promo__features-img-wrap
-              img.promo__features-img(src="img/delivery-icon.png" alt="")
-            p.promo__features-desc.
-              Бесплатная #[br] доставка
+            li.promo__features-item
+              .promo__features-img-wrap
+                img.promo__features-img(src="img/delivery-icon.png" alt="")
+              p.promo__features-desc.
+                Бесплатная #[br] доставка
 
-          li.promo__features-item
-            .promo__features-img-wrap
-              img.promo__features-img(src="img/messages-icon.png" alt="")
-            p.promo__features-desc.
-              Ответим #[br] на все вопросы
+            li.promo__features-item
+              .promo__features-img-wrap
+                img.promo__features-img(src="img/messages-icon.png" alt="")
+              p.promo__features-desc.
+                Ответим #[br] на все вопросы
 
-        button.button.button_large.promo__button заказать консультацию
-        p.promo__desc.
-          или #[a.promo__catalog-link(href="#") перейти в каталог]
-  section.our-features
-    .container
-      h2.our-features__heading Наши преимущества
-      ul.our-features__list
-        li.our-features__item
-          .our-features__img-wrap
-            img.our-features__img(src="../img/cup-icon.jpg" alt="Декоративная иконка изображающая кубок")
-          h3.our-features__item-heading Делимся опытом
-          p.our-features__desc.
-            Наши сотрудники всегда готовы #[br] 
-            поделиться своим опытом, #[br] 
-            так как сами бегают полумарафоны, #[br] 
-            переплыли Босфор, готовятся к #[br] 
-            соревнованиям по триатлону!
-        li.our-features__item
-          .our-features__img-wrap
-            img.our-features__img(src="../img/heart-icon.jpg" alt="Декоративная иконка изображающая сердце")
-          h3.our-features__item-heading Заботимся о здоровье
-          p.our-features__desc.
-            Мы работаем для того, #[br]
-            чтобы Ваши занятия спортом шли на пользу #[br]
-            Вашему здоровью и были в радость Вам и  #[br]
-            Вашим близким! #[br]
+          button.button.button_large.promo__button заказать консультацию
+          p.promo__desc.
+            или #[a.promo__catalog-link(href="#") перейти в каталог]
+    section.our-features
+      .container
+        h2.our-features__heading.heading Наши преимущества
+        ul.our-features__list
+          li.our-features__item
+            .our-features__img-wrap
+              img.our-features__img(src="../img/cup-icon.jpg" alt="Декоративная иконка изображающая кубок")
+            h3.our-features__item-heading Делимся опытом
+            p.our-features__desc.
+              Наши сотрудники всегда готовы #[br] 
+              поделиться своим опытом, #[br] 
+              так как сами бегают полумарафоны, #[br] 
+              переплыли Босфор, готовятся к #[br] 
+              соревнованиям по триатлону!
+          li.our-features__item
+            .our-features__img-wrap
+              img.our-features__img(src="../img/heart-icon.jpg" alt="Декоративная иконка изображающая сердце")
+            h3.our-features__item-heading Заботимся о здоровье
+            p.our-features__desc.
+              Мы работаем для того, #[br]
+              чтобы Ваши занятия спортом шли на пользу #[br]
+              Вашему здоровью и были в радость Вам и  #[br]
+              Вашим близким! #[br]
 
-        li.our-features__item
-          .our-features__img-wrap
-            img.our-features__img(src="../img/shoe-icon.jpg" alt="Декоративная икона изображающая обувь")
-          h3.our-features__item-heading Учим бегать
-          p.our-features__desc.
-            Помогаем с обучением  #[br]
-            правильной технике бега!  #[br]
-            Дружим с крупнейшей школой бега в России #[br]
-            - #[a.our-features__desc-link  I LOVE RUNNING.] #[br]
+          li.our-features__item
+            .our-features__img-wrap
+              img.our-features__img(src="../img/shoe-icon.jpg" alt="Декоративная икона изображающая обувь")
+            h3.our-features__item-heading Учим бегать
+            p.our-features__desc.
+              Помогаем с обучением  #[br]
+              правильной технике бега!  #[br]
+              Дружим с крупнейшей школой бега в России #[br]
+              - #[a.our-features__desc-link  I LOVE RUNNING.] #[br]
+    section.consultation
+      .container
+        h2.consultation__heading.heading.heading_md.
+          Получите бесплатную консультацию #[br]
+          по подбору пульсометра 
+        p.consultation__desc.
+          Просто заполните форму заявки #[br]
+          и мы перезвоним вам в течении 10 минут
+        form.feedback-form.consultation__form(action="#")
+          input.feedback-form__input(
+            name='name'
+            type='text' 
+            placeholder='Ваш имя' 
+            required
+          )
+          input.feedback-form__input(
+            name='phone'
+            type='tel' 
+            placeholder='Ваш телефон' 
+            required
+          )
+          input.feedback-form__input(
+            name='email'
+            type='email' 
+            placeholder='Ваш E-mail' 
+            required
+          )
+          input.consultation__form-email.button.button_large(
+            type='submit' 
+            value="Заказать консультацию"
+          )
 
