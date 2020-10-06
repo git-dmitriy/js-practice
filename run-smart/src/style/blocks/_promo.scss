@@ -21,7 +21,7 @@
 }
 .promo__heading_small {
   display: block;
-  @include font(24px, auto, 500);
+  @include font(24px, 24px, 500);
 }
 .promo__features-list {
   display: flex;
