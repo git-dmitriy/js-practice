@@ -5,9 +5,6 @@
   text-align: center;
 }
 .our-features__heading {
-  @include font(30px, 36px, 700);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
   margin-bottom: 65px;
 }
 .our-features__list {

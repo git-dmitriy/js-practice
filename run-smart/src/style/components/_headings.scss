@@ -1,0 +1,10 @@
+.heading {
+  @include font(30px, 36px, 700);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.heading_md {
+  @include font(36px, 42px, 700);
+  letter-spacing: .8px;
+}
