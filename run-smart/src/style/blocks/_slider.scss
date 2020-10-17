@@ -1,0 +1,37 @@
+.slider {
+  padding-top: 100px;
+}
+.slider__wrap {
+  position: relative;
+  margin: 0 auto;
+  max-width: 820px;
+}
+.slider__item {
+}
+.slider__link {
+  max-width: 820px;
+}
+.slider__img {
+}
+.slider__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+}
+
+.slider__prev {
+  left: -70px;
+}
+.slider__next {
+  right: -70px;
+}
+.slider__btn-img_next {
+  transform: rotate(180deg);
+}
+
+.slider__btn-img {
+  height: 50px;
+  width: 30px;
+}
