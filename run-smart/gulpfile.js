@@ -113,7 +113,7 @@ task("pug", () => {
 });
 
 task("scripts", () => {
-  return src(path.src.js)
+  return src([...JS_LIBS, path.src.js])
     .pipe(plumber())
     .pipe(gulpif(env === "dev", sourcemaps.init()))
     .pipe(concat("main.js", { newLine: ";" }))
