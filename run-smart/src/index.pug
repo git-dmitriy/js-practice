@@ -109,3 +109,21 @@ html(lang="ru")
             value="Заказать консультацию"
           )
 
+    .container
+      .slider__wrap
+        button.slider__btn.slider__prev
+          img.slider__btn-img(src="./img/chevron-left-solid.svg" alt="Стрелка назад")
+        button.slider__btn.slider__next
+          img.slider__btn-img.slider__btn-img_next(src="./img/chevron-left-solid.svg" alt="Стрелка назад")
+        ul.slider
+          li.slider__item
+            a.slider__link(href='#')
+              img.slider__img(src="./img/slider-1-slide-1.jpg")
+          li.slider__item
+            a.slider__link(href='#')
+              img.slider__img(src="./img/slider-1-slide-2.jpg")
+          li.slider__item
+            a.slider__link(href='#')
+              img.slider__img(src="./img/slider-1-slide-3.jpg")
+
+    script(src="js/main.js")
