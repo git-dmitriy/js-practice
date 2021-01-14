@@ -72,6 +72,7 @@ gulp.task("watch", () => {
     serveStaticOptions: {
       extensions: ["html", "json"],
     },
+    open: false,
   });
 
   gulp.watch("./src/index.html", gulp.parallel("copy-html"));
