@@ -3,11 +3,8 @@
 const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
-const path = require("path");
 
 const dist = "./dist/";
-
-// const dist = "C:/MAMP/htdocs/kartiny.ru";
 
 gulp.task("copy-html", () => {
   return gulp
@@ -23,7 +20,6 @@ gulp.task("build-js", () => {
       webpack({
         mode: "development",
         output: {
-          path: path.resolve(__dirname, "dist/js/"),
           filename: "script.js",
         },
         watch: false,
@@ -53,7 +49,7 @@ gulp.task("build-js", () => {
         },
       })
     )
-    .pipe(gulp.dest(dist))
+    .pipe(gulp.dest(dist + "js"))
     .on("end", browsersync.reload);
 });
 
@@ -80,7 +76,6 @@ gulp.task("watch", () => {
 });
 
 gulp.task("build", gulp.parallel("copy-html", "copy-assets", "build-js"));
-
 gulp.task("build-prod-js", () => {
   return gulp
     .src("./src/js/main.js")
@@ -114,7 +109,12 @@ gulp.task("build-prod-js", () => {
         },
       })
     )
-    .pipe(gulp.dest(dist));
+    .pipe(gulp.dest(dist + "js"));
 });
 
 gulp.task("default", gulp.parallel("watch", "build"));
+
+gulp.task(
+  "build:prod",
+  gulp.parallel("copy-html", "copy-assets", "build-prod-js")
+);
