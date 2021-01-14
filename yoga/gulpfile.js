@@ -3,7 +3,7 @@
 const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
-
+const del = require("del");
 const dist = "./dist/";
 
 gulp.task("copy-html", () => {
@@ -11,6 +11,10 @@ gulp.task("copy-html", () => {
     .src("./src/index.html")
     .pipe(gulp.dest(dist))
     .pipe(browsersync.stream());
+});
+
+gulp.task("clean", () => {
+  return del([dist]);
 });
 
 gulp.task("build-js", () => {
@@ -75,7 +79,11 @@ gulp.task("watch", () => {
   gulp.watch("./src/js/**/*.js", gulp.parallel("build-js"));
 });
 
-gulp.task("build", gulp.parallel("copy-html", "copy-assets", "build-js"));
+gulp.task(
+  "build",
+  gulp.series("clean", gulp.parallel("copy-html", "copy-assets", "build-js"))
+);
+
 gulp.task("build-prod-js", () => {
   return gulp
     .src("./src/js/main.js")
@@ -112,9 +120,9 @@ gulp.task("build-prod-js", () => {
     .pipe(gulp.dest(dist + "js"));
 });
 
-gulp.task("default", gulp.parallel("watch", "build"));
-
 gulp.task(
   "build:prod",
   gulp.parallel("copy-html", "copy-assets", "build-prod-js")
 );
+
+gulp.task("default", gulp.series("clean", gulp.parallel("watch", "build")));
