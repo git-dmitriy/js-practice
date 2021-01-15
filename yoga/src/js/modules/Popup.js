@@ -3,37 +3,50 @@ export class Popup {
     this.btn = options.btn;
     this.overlay = options.overlay;
     this.closeBtn = options.closeBtn;
-    this.addition;
+    this.fixedHeader = options.fixedHeader;
   }
 
   init() {
-    let moreBtn = document.querySelector(this.btn);
+    let btns = document.querySelectorAll(this.btn);
     let overlay = document.querySelector(this.overlay);
     let closeBtn = document.querySelector(this.closeBtn);
     let scrollWidth = this.getScrollbarWidth();
 
-    moreBtn.addEventListener("click", (event) => {
-      overlay.style.display = "block";
-      // event.target.classList.add(`${this.btn.substr(1)}-splash`);
-      document.body.style.overflow = "hidden";
-      document.body.style.marginRight = `${scrollWidth}px`;
+    console.log("querySelectorAll(morebtn)", btns);
+    btns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        overlay.style.display = "block";
+
+        if (this.fixedHeader) {
+          let header = document.querySelector(this.fixedHeader);
+          let headerWidth = header.offsetWidth;
+          header.style.width = `${headerWidth}px`;
+        }
+        document.body.style.overflow = "hidden";
+        document.body.style.marginRight = `${scrollWidth}px`;
+      });
     });
 
-    closeBtn.addEventListener("click", function () {
+    closeBtn.addEventListener("click", () => {
       overlay.style.display = "none";
-      // moreBtn.classList.remove(`${this.btn.substr(1)}-splash`);
+
       document.body.style.overflow = "";
       document.body.style.marginRight = "";
+      if (this.fixedHeader) {
+        document.querySelector(this.fixedHeader).style.width = "";
+      }
     });
   }
 
   getScrollbarWidth() {
     let div = document.createElement("div");
 
-    div.style.width = "50px";
-    div.style.height = "50px";
-    div.style.overflowY = "scroll";
-    div.style.visibility = "hidden";
+    div.style.cssText = `
+      width: 50px;
+      height: 50px;
+      overflow-y: scroll;
+      visibility: hidden;
+    `;
 
     document.body.appendChild(div);
 
