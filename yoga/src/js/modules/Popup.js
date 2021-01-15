@@ -12,7 +12,6 @@ export class Popup {
     let closeBtn = document.querySelector(this.closeBtn);
     let scrollWidth = this.getScrollbarWidth();
 
-    console.log("querySelectorAll(morebtn)", btns);
     btns.forEach((btn) => {
       btn.addEventListener("click", () => {
         overlay.style.display = "block";
