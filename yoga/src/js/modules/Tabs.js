@@ -12,9 +12,14 @@ export class Tabs {
 
     tabsHeader.addEventListener("click", (event) => {
       let target = event.target;
+      tabs.forEach((element) => {
+        element.classList.remove(`${this.tabs.substr(1)}_active`);
+      });
       if (target && target.classList.contains(this.tabs.substr(1))) {
         for (let i = 0; i < tabs.length; i++) {
+          console.log("target", target);
           if (target == tabs[i]) {
+            target.classList.add(`${this.tabs.substr(1)}_active`);
             hideTabContent(0);
             showTabContent(i);
             break;
@@ -22,6 +27,8 @@ export class Tabs {
         }
       }
     });
+
+    tabs[0].classList.add(`${this.tabs.substr(1)}_active`);
     hideTabContent(1);
 
     function hideTabContent(a) {
