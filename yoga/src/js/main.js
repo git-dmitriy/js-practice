@@ -1,123 +1,102 @@
-window.addEventListener('DOMContentLoaded', function () {
-  'use strict';
+import { Popup } from "./modules/Popup";
+import { Slider } from "./modules/Slider";
+import { Tabs } from "./modules/Tabs";
+import { Timer } from "./modules/Timer";
+import Cleave from "cleave.js";
+require("cleave.js/dist/addons/cleave-phone.ru.js");
 
-  let tab = document.querySelectorAll('.info-header-tab'),
-    info = document.querySelector('.info-header'),
-    tabContent = document.querySelectorAll('.info-tab-content');
+// const Cleave = require("cleave.js");
+// require("cleave.js/dist/addons/cleave-phone.{country}");
 
-  function hideTabContent(a) {
-    for (let i = a; i < tabContent.length; i++) {
-      tabContent[i].classList.remove('show');
-      tabContent[i].classList.add('hide');
-    }
-  }
-  hideTabContent(1);
+window.addEventListener("DOMContentLoaded", function () {
+  "use strict";
 
-  function showTabContent(element) {
-    if (tabContent[element].classList.contains('hide')) {
-      tabContent[element].classList.remove('hide');
-      tabContent[element].classList.add('show');
-    }
-  }
-  info.addEventListener('click', function (event) {
-    let target = event.target;
-    if (target && target.classList.contains('info-header-tab')) {
-      for (let i = 0; i < tab.length; i++) {
-        if (target == tab[i]) {
-          hideTabContent(0);
-          showTabContent(i);
-          break;
-        }
-      }
-    }
+  const tabs = new Tabs({
+    tabs: ".info-header-tab",
+    tabsHeader: ".info-header",
+    tabsContent: ".info-tab-content",
   });
 
-
-  //  timer
-  let deadline = '2020-09-21T00:00:00';
-
-  function getTimeRemaining(endtime) {
-    let t = Date.parse(endtime) - Date.parse(new Date()),
-      seconds = ('00' + Math.floor((t % (1000 * 60)) / 1000)).slice(-2), // 1000 ms == 1s
-      minutes = ('00' + Math.floor((t % (1000 * 60 * 60)) / (1000 * 60))).slice(-2),
-      hours = ('00' + Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).slice(-2), // 3 600s == 60m == 1h
-      days = ('00' + Math.floor(t / (1000 * 60 * 60 * 24))).slice(-2); // 24h == 1 440m == 1d
-
-    return {
-      'total': t,
-      'days': days,
-      'hours': hours,
-      'minutes': minutes,
-      'seconds': seconds
-    };
-  }
-
-  function setClock(id, endtime) {
-    let timer = document.getElementById(id),
-      days = document.querySelector('.days'),
-      hours = document.querySelector('.hours'),
-      minutes = document.querySelector('.minutes'),
-      seconds = document.querySelector('.seconds'),
-      timeInterval = setInterval(updateClock, 1000);
-
-    function updateClock() {
-      let t = getTimeRemaining(endtime);
-      days.textContent = t.days;
-      hours.textContent = t.hours;
-      minutes.textContent = t.minutes;
-      seconds.textContent = t.seconds;
-
-      if (t.total <= 0) {
-        clearInterval(timeInterval);
-      }
-    }
-  }
-  setClock('timer', deadline);
+  const timer = new Timer({
+    container: "#timer",
+    endDate: {
+      year: "2021",
+      month: "09",
+      day: "21",
+      hours: "00",
+      minutes: "00",
+      seconds: "00",
+    },
+  });
 
   // popup
 
-  let moreBtn = document.querySelector('.more'),
-    overlay = document.querySelector('.overlay'),
-    closeBtn = document.querySelector('.popup-close');
-
-  moreBtn.addEventListener('click', function () {
-    overlay.style.display = 'block';
-    this.classList.add('more-splash');
-    document.body.style.overflow = 'hidden';
+  const popup = new Popup({
+    btn: ".more",
+    overlay: ".overlay",
+    closeBtn: ".popup-close",
+    fixedHeader: "header",
   });
 
-  closeBtn.addEventListener('click', function () {
-    overlay.style.display = 'none';
-    moreBtn.classList.remove('more-splash');
-    document.body.style.overflow = '';
+  const description = new Popup({
+    btn: ".description-btn",
+    overlay: ".overlay",
+    closeBtn: ".popup-close",
+    fixedHeader: "header",
   });
 
-  // Form
+  const slider = new Slider({
+    slides: ".slider-item",
+    prevBtn: ".prev",
+    nextBtn: ".next",
+    dotsWrap: ".slider-dots",
+    dots: ".dot",
+  });
+
+  tabs.init();
+  timer.init();
+  slider.init();
+  popup.init();
+  description.init();
+
+  const cleave = new Cleave(".phone", {
+    phone: true,
+    phoneRegionCode: "RU",
+  });
+  const popupPhone = new Cleave("#phone", {
+    phone: true,
+    phoneRegionCode: "RU",
+  });
+
+  //  Form
 
   let message = {
-    loading: 'Пожлуйста подождите...',
-    succes: 'Спасибо! Мы скоро свяжемся с вами!',
-    failure: 'Что-то пошло не так...'
+    loading: "Пожлуйста подождите...",
+    succes: "Спасибо! Мы скоро свяжемся с вами!",
+    failure: "Что-то пошло не так...",
   };
 
-  let form = document.querySelector('.main-form'),
-    input = form.getElementsByTagName('input'),
-    statusMessage = document.createElement('div');
+  let form = document.querySelector(".main-form"),
+    input = form.getElementsByTagName("input"),
+    statusMessage = document.createElement("div");
 
-  statusMessage.classList.add('status');
+  statusMessage.classList.add("status");
 
-  form.addEventListener('submit', function (event) {
+  form.addEventListener("submit", function (event) {
     event.preventDefault();
     form.appendChild(statusMessage);
 
     let request = new XMLHttpRequest();
-    request.open('POST', 'server.php');
-    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    request.open("POST", "server.php");
+    request.setRequestHeader(
+      "Content-Type",
+      "application/x-www-form-urlencoded"
+    );
 
     let formData = new FormData(form);
     request.send(formData);
 
-    request.addEventListener('readystatechange', function () {
+    request.addEventListener("readystatechange", function () {
       if (request.reqdyState < 4) {
         statusMessage.innerHTML = message.loading;
       } else if (request.readyState === 4 && request.status == 200) {
@@ -128,98 +107,46 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-
-  // slider
-
-  let slideIndex = 1,
-    slides = document.querySelectorAll('.slider-item'),
-    prev = document.querySelector('.prev'),
-    next = document.querySelector('.next'),
-    dotsWrap = document.querySelector('.slider-dots'),
-    dots = document.querySelectorAll('.dot');
-
-  showSlide(slideIndex);
-
-  function showSlide(n) {
-    if (n > slides.length) {
-      slideIndex = 1;
-    }
-    if (n < 1) {
-      slideIndex = slides.length;
-    }
-
-    slides.forEach((item) => item.style.display = 'none');
-    dots.forEach((item) => item.classList.remove('dot-active'));
-    slides[slideIndex - 1].style.display = 'block';
-    dots[slideIndex - 1].classList.add('dot-active');
-  }
-
-  function changeSlide(n) {
-    showSlide(slideIndex += n);
-  }
-
-  function currentSlide(n) {
-    showSlide(slideIndex = n);
-  }
-
-  prev.addEventListener('click', function () {
-    changeSlide(-1);
-  });
-
-  next.addEventListener('click', function () {
-    changeSlide(1);
-  });
-
-  dotsWrap.addEventListener('click', function (event) {
-    for (let i = 0; i < dots.length + 1; i++) {
-      if (event.target.classList.contains('dot') && event.target == dots[i - 1]) {
-        currentSlide(i);
-      }
-    }
-  });
-
-
   // calculator
 
-  let persons = document.querySelectorAll('.counter-block-input')[0],
-    restDays = document.querySelectorAll('.counter-block-input')[1],
-    place = document.getElementById('select'),
-    totalValue = document.getElementById('total'),
+  let persons = document.querySelectorAll(".counter-block-input")[0],
+    restDays = document.querySelectorAll(".counter-block-input")[1],
+    place = document.getElementById("select"),
+    totalValue = document.getElementById("total"),
     personsSum = 0,
     daysSum = 0,
     total = 0;
 
   totalValue.innerHTML = 0;
 
-  persons.addEventListener('input', function () {
+  persons.addEventListener("input", function () {
     personsSum = +this.value;
     total = (daysSum + personsSum) * 4000;
 
-    if (restDays.value == '') {
+    if (restDays.value == "") {
       totalValue.innerHTML = 0;
     } else {
       totalValue.innerHTML = total;
     }
   });
 
-  restDays.addEventListener('input', function () {
+  restDays.addEventListener("input", function () {
     daysSum = +this.value;
     total = (daysSum + personsSum) * 4000;
 
-    if (persons.value == '') {
+    if (persons.value == "") {
       totalValue.innerHTML = 0;
     } else {
       totalValue.innerHTML = total;
     }
   });
 
-  place.addEventListener('input', function () {
-    if (restDays.value == '' | RTCSessionDescription.value == '') {
+  place.addEventListener("input", function () {
+    if ((restDays.value == "") | (RTCSessionDescription.value == "")) {
       totalValue.innerHTML = 0;
     } else {
       let a = total;
       totalValue.innerHTML = a * this.options[this.selectedIndex].value;
     }
   });
-
 });
