@@ -12,7 +12,6 @@ export class Timer {
     const timer = setInterval(() => {
       let date = new Date(endDateStr);
       let ms_left = date - Date.now();
-
       if (ms_left <= 0) {
         clearInterval(timer);
 
@@ -32,7 +31,7 @@ export class Timer {
         day = day < 10 ? "0" + day : day;
         hour = hour < 10 ? "0" + hour : hour;
         minutes = minutes < 10 ? "0" + minutes : minutes;
-
+        second = second < 10 ? "0" + second : second;
         container.innerHTML = `
           <span class="month"> ${month}</span>
           <span>/</span>
