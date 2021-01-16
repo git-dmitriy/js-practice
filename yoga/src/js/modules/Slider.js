@@ -9,13 +9,46 @@ export class Slider {
 
   init() {
     let slideIndex = 1;
-    let slides = document.querySelectorAll(this.slides);
-    let prev = document.querySelector(this.prev);
-    let next = document.querySelector(this.next);
-    let dotsWrap = document.querySelector(this.dotsWrap);
-    let dots = document.querySelectorAll(this.dots);
+    const slides = document.querySelectorAll(this.slides);
+    const prev = document.querySelector(this.prev);
+    const next = document.querySelector(this.next);
+    const dotsWrap = document.querySelector(this.dotsWrap);
+    const dotsClass = this.dots.substr(1);
+    const dots = createDots();
 
     showSlide(slideIndex);
+
+    prev.addEventListener("click", () => {
+      changeSlide(-1);
+    });
+
+    next.addEventListener("click", () => {
+      changeSlide(1);
+    });
+
+    dotsWrap.addEventListener("click", (event) => {
+      for (let i = 0; i < dots.length + 1; i++) {
+        if (
+          event.target.classList.contains("dot") &&
+          event.target == dots[i - 1]
+        ) {
+          currentSlide(i);
+        }
+      }
+    });
+
+    function createDots() {
+      const dots = [];
+      for (let i = 0; i < slides.length; i++) {
+        dots.push(document.createElement("span"));
+      }
+
+      dots.forEach((element) => {
+        element.classList.add(dotsClass);
+        dotsWrap.append(element);
+      });
+      return dots;
+    }
 
     function showSlide(n) {
       if (n > slides.length) {
@@ -38,24 +71,5 @@ export class Slider {
     function currentSlide(n) {
       showSlide((slideIndex = n));
     }
-
-    prev.addEventListener("click", () => {
-      changeSlide(-1);
-    });
-
-    next.addEventListener("click", () => {
-      changeSlide(1);
-    });
-
-    dotsWrap.addEventListener("click", (event) => {
-      for (let i = 0; i < dots.length + 1; i++) {
-        if (
-          event.target.classList.contains("dot") &&
-          event.target == dots[i - 1]
-        ) {
-          currentSlide(i);
-        }
-      }
-    });
   }
 }
