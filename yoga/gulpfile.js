@@ -4,6 +4,15 @@ const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
 const del = require("del");
+const plumber = require("gulp-plumber");
+const concat = require("gulp-concat");
+const sass = require("gulp-sass");
+const gcmq = require("gulp-group-css-media-queries");
+const cleanCSS = require("gulp-clean-css");
+const autoprefixer = require("gulp-autoprefixer");
+
+sass.compiler = require("sass");
+
 const dist = "./dist/";
 
 gulp.task("copy-html", () => {
@@ -15,6 +24,23 @@ gulp.task("copy-html", () => {
 
 gulp.task("clean", () => {
   return del([dist]);
+});
+
+gulp.task("styles", () => {
+  return gulp
+    .src("src/assets/css/**/*.scss")
+    .pipe(plumber())
+    .pipe(concat("main.css"))
+    .pipe(sass())
+    .pipe(gcmq())
+    .pipe(cleanCSS())
+    .pipe(
+      autoprefixer(["last 15 versions", "> 1%", "ie 8", "ie 7"], {
+        cascade: true,
+      })
+    )
+    .pipe(gulp.dest(dist + "assets/css"))
+    .pipe(browsersync.stream());
 });
 
 gulp.task("build-js", () => {
@@ -59,7 +85,7 @@ gulp.task("build-js", () => {
 
 gulp.task("copy-assets", () => {
   return gulp
-    .src("./src/assets/**/*.*")
+    .src(["./src/assets/**/*.*", "!./src/assets/css/**"])
     .pipe(gulp.dest(dist + "/assets"))
     .on("end", browsersync.reload);
 });
@@ -76,13 +102,16 @@ gulp.task("watch", () => {
   });
 
   gulp.watch("./src/index.html", gulp.parallel("copy-html"));
-  gulp.watch("./src/assets/**/*.*", gulp.parallel("copy-assets"));
+  gulp.watch("./src/assets/**/*.*", gulp.parallel("copy-assets", "styles"));
   gulp.watch("./src/js/**/*.js", gulp.parallel("build-js"));
 });
 
 gulp.task(
   "build",
-  gulp.series("clean", gulp.parallel("copy-html", "copy-assets", "build-js"))
+  gulp.series(
+    "clean",
+    gulp.parallel("copy-html", "styles", "copy-assets", "build-js")
+  )
 );
 
 gulp.task("build-prod-js", () => {
@@ -123,7 +152,7 @@ gulp.task("build-prod-js", () => {
 
 gulp.task(
   "build:prod",
-  gulp.parallel("copy-html", "copy-assets", "build-prod-js")
+  gulp.parallel("copy-html", "styles", "copy-assets", "build-prod-js")
 );
 
 gulp.task("default", gulp.series("clean", gulp.parallel("watch", "build")));
