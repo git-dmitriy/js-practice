@@ -1,48 +1,63 @@
 export class Timer {
   constructor(options) {
     this.container = options.container;
-    this.endDate = options.endDate;
+    this.deadline = options.deadline;
   }
 
   init() {
-    let container = document.querySelector(this.container);
-
-    let endDateStr = `${this.endDate.year}-${this.endDate.month}-${this.endDate.day}T${this.endDate.hours}:${this.endDate.minutes}:${this.endDate.seconds}`;
-
-    const timer = setInterval(() => {
-      let date = new Date(endDateStr);
-      let ms_left = date - Date.now();
-      if (ms_left <= 0) {
-        clearInterval(timer);
-
-        container.innerHTML = "Время акции истекло";
+    const addZero = (num) => {
+      if (num <= 9) {
+        return "0" + num;
       } else {
-        let res = new Date(ms_left);
-
-        let year = res.getUTCFullYear() - 1970 || "";
-        let month = res.getUTCMonth() || "";
-        let day = res.getUTCDate() - 1;
-        let hour = res.getUTCHours();
-        let minutes = res.getUTCMinutes();
-        let second = res.getUTCSeconds();
-
-        year = year.toString().slice(-2);
-        month = month < 10 ? "0" + month : month;
-        day = day < 10 ? "0" + day : day;
-        hour = hour < 10 ? "0" + hour : hour;
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        second = second < 10 ? "0" + second : second;
-        container.innerHTML = `
-          <span class="month"> ${month}</span>
-          <span>/</span>
-          <span class="days">${day}</span>
-          <br>
-					<span class="hours">${hour}</span>
-					<span>:</span>
-					<span class="minutes">${minutes}</span>
-					<span>:</span>
-					<span class="seconds">${second}</span>`;
+        return num;
       }
-    }, 1000);
+    };
+
+    const getTimeRemaninig = (endtime) => {
+      const t = Date.parse(endtime) - Date.parse(new Date()),
+        seconds = Math.floor((t / 1000) % 60),
+        minutes = Math.floor((t / 1000 / 60) % 60),
+        hours = Math.floor((t / (1000 * 60 * 60)) % 24),
+        days = Math.floor(t / (1000 * 60 * 60 * 24));
+
+      return {
+        total: t,
+        days: days,
+        hours: hours,
+        minutes: minutes,
+        seconds: seconds,
+      };
+    };
+
+    const setClock = (selector, endtime) => {
+      const timer = document.querySelector(selector),
+        days = timer.querySelector("#days"),
+        hours = timer.querySelector("#hours"),
+        minutes = timer.querySelector("#minutes"),
+        seconds = timer.querySelector("#seconds"),
+        timeInterval = setInterval(updateClock, 1000);
+
+      updateClock();
+
+      function updateClock() {
+        const t = getTimeRemaninig(endtime);
+
+        days.textContent = addZero(t.days);
+        hours.textContent = addZero(t.hours);
+        minutes.textContent = addZero(t.minutes);
+        seconds.textContent = addZero(t.seconds);
+
+        if (t.total <= 0) {
+          days.textContent = "00";
+          hours.textContent = "00";
+          minutes.textContent = "00";
+          seconds.textContent = "00";
+
+          clearInterval(timeInterval);
+        }
+      }
+    };
+
+    setClock(this.container, this.deadline);
   }
 }
