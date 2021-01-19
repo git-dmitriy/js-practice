@@ -2,12 +2,8 @@
 @use "./mixins.scss" as m;
 
 .fade {
-  -webkit-animation-name: fade;
   animation-name: fade;
-  -webkit-animation-duration: 2.5s;
   animation-duration: 2.5s;
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 2.5s;
 }
 
 @-webkit-keyframes fade {
@@ -29,9 +25,7 @@
 }
 
 .more-splash {
-  -webkit-animation-name: splash;
   animation-name: splash;
-  -webkit-animation-duration: 1.7s;
   animation-duration: 1.7s;
 }
 
@@ -593,7 +587,6 @@ a:active {
   }
 
   @media (max-width: 576px) {
-
     max-width: 100%;
   }
 }
@@ -672,6 +665,9 @@ a:active {
   height: 70px;
   border: 1px solid rgba(199, 128, 48, 0.5);
   margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .content footer .social .social-block:hover {
@@ -681,8 +677,9 @@ a:active {
 .content footer .social .social-block a img {
   width: 50%;
   display: block;
-  margin: 0 auto;
-  margin-top: 17px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .overlay {
