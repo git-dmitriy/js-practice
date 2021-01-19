@@ -186,6 +186,7 @@ a:active {
 .content .info-header {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 768px) {
@@ -200,6 +201,7 @@ a:active {
   @include m.adaptive-value(font-size, 24, 20);
   cursor: pointer;
   margin-bottom: 20px;
+  margin-right: 30px;
 }
 
 .content .info-header-tab:after {
@@ -255,6 +257,7 @@ a:active {
   margin-top: 30px;
   color: #fff;
   font-weight: 300;
+  line-height: 1.5;
   @include m.adaptive-value(font-size, 16, 12);
 }
 
