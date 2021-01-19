@@ -28,7 +28,7 @@ gulp.task("clean", () => {
 
 gulp.task("styles", () => {
   return gulp
-    .src("src/assets/css/**/*.scss")
+    .src("src/assets/css/style.scss")
     .pipe(plumber())
     .pipe(concat("main.css"))
     .pipe(sass())
@@ -155,4 +155,4 @@ gulp.task(
   gulp.parallel("copy-html", "styles", "copy-assets", "build-prod-js")
 );
 
-gulp.task("default", gulp.series("clean", gulp.parallel("watch", "build")));
+gulp.task("default", gulp.series("clean", "build", "watch"));
