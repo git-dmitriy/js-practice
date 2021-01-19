@@ -200,6 +200,7 @@ a:active {
   font-weight: bold;
   @include m.adaptive-value(font-size, 24, 20);
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .content .info-header-tab:after {
