@@ -33,8 +33,6 @@ const mask = (selector) => {
     if (event.type == "blur") {
       if (this.value.length == 2) {
         this.value = "";
-      } else {
-        setCursorPosition(this.value.length, this);
       }
     }
   }
