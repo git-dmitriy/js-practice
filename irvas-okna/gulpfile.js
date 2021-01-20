@@ -3,11 +3,41 @@
 const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
+const del = require("del");
+const plumber = require("gulp-plumber");
+const concat = require("gulp-concat");
+const sass = require("gulp-sass");
+const gcmq = require("gulp-group-css-media-queries");
+const cleanCSS = require("gulp-clean-css");
+const autoprefixer = require("gulp-autoprefixer");
+
+sass.compiler = require("sass");
 
 const dist = "./dist/";
 
-// NOTE путь для проверки форм на полноценном сервере
+// * путь для проверки форм на полноценном сервере
 // const dist = 'C:/MAMP/htdocs/testing-source';
+
+gulp.task("clean", () => {
+  return del([dist]);
+});
+
+gulp.task("styles", () => {
+  return gulp
+    .src("src/assets/css/style.scss")
+    .pipe(plumber())
+    .pipe(concat("main.css"))
+    .pipe(sass())
+    .pipe(gcmq())
+    .pipe(cleanCSS())
+    .pipe(
+      autoprefixer(["last 15 versions", "> 1%", "ie 8", "ie 7"], {
+        cascade: true,
+      })
+    )
+    .pipe(gulp.dest(dist + "assets/css"))
+    .pipe(browsersync.stream());
+});
 
 gulp.task("copy-html", () => {
   return gulp
@@ -58,7 +88,7 @@ gulp.task("build-js", () => {
 
 gulp.task("copy-assets", () => {
   return gulp
-    .src("./src/assets/**/*.*")
+    .src(["./src/assets/**/*.*", "!./src/assets/css/**/*.*"])
     .pipe(gulp.dest(dist + "/assets"))
     .on("end", browsersync.reload);
 });
@@ -72,11 +102,14 @@ gulp.task("watch", () => {
   });
 
   gulp.watch("./src/index.html", gulp.parallel("copy-html"));
-  gulp.watch("./src/assets/**/*.*", gulp.parallel("copy-assets"));
+  gulp.watch("./src/assets/**/*.*", gulp.parallel("copy-assets", "styles"));
   gulp.watch("./src/js/**/*.js", gulp.parallel("build-js"));
 });
 
-gulp.task("build", gulp.parallel("copy-html", "copy-assets", "build-js"));
+gulp.task(
+  "build",
+  gulp.parallel("copy-html", "copy-assets", "styles", "build-js")
+);
 
 gulp.task("build-prod-js", () => {
   return gulp
@@ -114,4 +147,4 @@ gulp.task("build-prod-js", () => {
     .pipe(gulp.dest(dist));
 });
 
-gulp.task("default", gulp.parallel("watch", "build"));
+gulp.task("default", gulp.series("clean", "build", "watch"));
