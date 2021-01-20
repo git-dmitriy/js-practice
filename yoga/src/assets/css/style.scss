@@ -181,18 +181,16 @@ a:active {
   background-color: #373737;
   padding: 50px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8);
+
+  @media (max-width: 768px) {
+    padding: 15px 15px 30px;
+  }
 }
 
 .content .info-header {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-}
-
-@media (max-width: 768px) {
-  .content .info {
-    padding: 15px;
-  }
 }
 
 .content .info-header-tab {
@@ -447,8 +445,8 @@ a:active {
 
 .content .slider-dots .dot {
   cursor: pointer;
-  height: 16px;
-  width: 16px;
+  width: 18px;
+  height: 18px;
   margin: 0 10px;
   background-color: #c78030;
   border-radius: 50%;
@@ -700,13 +698,15 @@ a:active {
   z-index: 4;
   left: 50%;
   top: 150px;
-  width: 752px;
+  width: 100%;
+  max-width: 752px;
+  padding: 10px;
   transform: translateX(-50%);
 }
 
 .overlay .popup-close {
   position: absolute;
-  right: -20px;
+  right: 10px;
   top: -35px;
   cursor: pointer;
   font-size: 35px;
@@ -733,6 +733,10 @@ a:active {
   background-size: cover;
   padding: 35px 88px 50px 88px;
   color: #fff;
+
+  @media (max-width: 576px) {
+    padding: 30px 20px 70px;
+  }
 }
 
 .overlay .popup-form-header {
@@ -753,13 +757,33 @@ a:active {
 
 .overlay .popup-form__input {
   width: 365px;
+  width: 60%;
+  padding: 0 10px;
   height: 56px;
-  margin-top: 17px;
+  margin-right: 17px;
   font-size: 18px;
   background-color: #c78030;
   border: none;
   color: #fff;
   text-align: center;
+
+  @media (max-width: 576px) {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+}
+
+.overlay .popup-form__container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
 }
 
 .overlay .popup-form__input::-webkit-input-placeholder {
@@ -796,14 +820,18 @@ a:active {
 
 .overlay .popup-form__btn {
   width: 180px;
+  width: 30%;
   height: 56px;
   font-size: 15px;
   line-height: 22px;
-  margin-left: 16px;
   background-color: transparent;
   color: #c78030;
   border: 1px solid #c78030;
   cursor: pointer;
+
+  @media (max-width: 576px) {
+    width: 100%;
+  }
 }
 
 .overlay .popup-form__btn:hover {
