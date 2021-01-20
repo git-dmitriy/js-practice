@@ -2,11 +2,7 @@ import { Popup } from "./modules/Popup";
 import { Slider } from "./modules/Slider";
 import { Tabs } from "./modules/Tabs";
 import { Timer } from "./modules/Timer";
-import Cleave from "cleave.js";
-require("cleave.js/dist/addons/cleave-phone.ru.js");
-
-// const Cleave = require("cleave.js");
-// require("cleave.js/dist/addons/cleave-phone.{country}");
+import { PhoneMask } from "./modules/PhoneMask";
 
 window.addEventListener("DOMContentLoaded", function () {
   "use strict";
@@ -19,14 +15,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   const timer = new Timer({
     container: "#timer",
-    endDate: {
-      year: "2021",
-      month: "09",
-      day: "21",
-      hours: "00",
-      minutes: "00",
-      seconds: "00",
-    },
+    deadline: "2022-01-01T00:00:00",
   });
 
   // popup
@@ -38,7 +27,7 @@ window.addEventListener("DOMContentLoaded", function () {
     fixedHeader: "header",
   });
 
-  const description = new Popup({
+  const descriptionPopup = new Popup({
     btn: ".description-btn",
     overlay: ".overlay",
     closeBtn: ".popup-close",
@@ -52,26 +41,19 @@ window.addEventListener("DOMContentLoaded", function () {
     dotsWrap: ".slider-dots",
     dots: ".dot",
   });
+  const phoneNumbersMask = new PhoneMask(".phone");
 
   tabs.init();
   timer.init();
   slider.init();
   popup.init();
-  description.init();
-
-  const cleave = new Cleave(".phone", {
-    phone: true,
-    phoneRegionCode: "RU",
-  });
-  const popupPhone = new Cleave("#phone", {
-    phone: true,
-    phoneRegionCode: "RU",
-  });
+  descriptionPopup.init();
+  phoneNumbersMask.init();
 
   //  Form
 
   let message = {
-    loading: "Пожлуйста подождите...",
+    loading: "Пожалуйста подождите...",
     succes: "Спасибо! Мы скоро свяжемся с вами!",
     failure: "Что-то пошло не так...",
   };
