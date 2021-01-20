@@ -1,3 +1,7 @@
+@use './mixins.scss' as m;
+@use './bootstrap.scss';
+@use './animate.min.scss';
+
 /*Fonts Family*/
 
 /*Colors*/
@@ -10,7 +14,7 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #000000;
@@ -22,12 +26,12 @@ body {
 }
 
 .faded {
-  animation: faded linear .3s;
+  animation: faded linear 0.3s;
 }
 
 @keyframes faded {
   from {
-    opacity: .1;
+    opacity: 0.1;
   }
   to {
     opacity: 1;
@@ -38,7 +42,10 @@ a:hover {
   text-decoration: none;
 }
 
-a:focus, button:focus, input:focus, textarea:focus {
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
   outline: none;
 }
 
@@ -57,7 +64,7 @@ a:focus, button:focus, input:focus, textarea:focus {
 .form h2 {
   margin-bottom: 3rem;
   font-size: 2rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   color: #333333;
@@ -128,12 +135,18 @@ a:focus, button:focus, input:focus, textarea:focus {
 .button {
   padding: 2.5rem 0rem;
   font-size: 1.7rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   border: 1px solid #ffc600;
   border-radius: 1rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(#ffed26), to(#ffb400));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#ffed26),
+    to(#ffb400)
+  );
   background: linear-gradient(180deg, #ffed26 0%, #ffb400 100%);
   -webkit-box-shadow: 1px 2px 20px 0px rgba(255, 153, 0, 0.4);
   box-shadow: 1px 2px 20px 0px rgba(255, 153, 0, 0.4);
@@ -152,7 +165,7 @@ a:focus, button:focus, input:focus, textarea:focus {
 .section_header h2 {
   font-size: 3rem;
   line-height: 1.4;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   color: #333333;
@@ -229,7 +242,7 @@ a:focus, button:focus, input:focus, textarea:focus {
   background-color: #ffffff;
   font-size: 1.4rem;
   line-height: 1.2;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   color: #55a831;
@@ -285,7 +298,7 @@ a:focus, button:focus, input:focus, textarea:focus {
 }
 
 .header .working_hours p span {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 1.8rem;
@@ -306,7 +319,7 @@ a:focus, button:focus, input:focus, textarea:focus {
 .header .contact_us_wrap a {
   display: block;
   font-size: 2.3rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   color: #333333;
@@ -319,7 +332,7 @@ a:focus, button:focus, input:focus, textarea:focus {
 
 .header .contact_us_wrap .phone_link {
   font-size: 1.5rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #0089cd;
@@ -338,7 +351,7 @@ a:focus, button:focus, input:focus, textarea:focus {
   /*margin-top: -4rem;*/
   font-size: 5.5rem;
   line-height: 1.5;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   color: #333333;
@@ -365,7 +378,7 @@ a:focus, button:focus, input:focus, textarea:focus {
   margin-top: -6rem;
   font-size: 1.3rem;
   line-height: 1.3;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   text-transform: uppercase;
@@ -413,14 +426,26 @@ a:focus, button:focus, input:focus, textarea:focus {
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   border-top: 0.5rem solid #0089cd;
-  background: -webkit-gradient(linear, left top, left bottom, from(#c7dce9), color-stop(0%, #c7dce9), to(rgba(255, 255, 255, 0)));
-  background: linear-gradient(180deg, #c7dce9 0%, #c7dce9 0%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#c7dce9),
+    color-stop(0%, #c7dce9),
+    to(rgba(255, 255, 255, 0))
+  );
+  background: linear-gradient(
+    180deg,
+    #c7dce9 0%,
+    #c7dce9 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .glazing_cold h3 {
   margin-bottom: 2.5rem;
   font-size: 2rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   text-transform: uppercase;
@@ -434,14 +459,26 @@ a:focus, button:focus, input:focus, textarea:focus {
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
   border-top: 0.5rem solid #ffb903;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f7eac9), color-stop(0%, #f7eac9), to(rgba(255, 255, 255, 0)));
-  background: linear-gradient(180deg, #f7eac9 0%, #f7eac9 0%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#f7eac9),
+    color-stop(0%, #f7eac9),
+    to(rgba(255, 255, 255, 0))
+  );
+  background: linear-gradient(
+    180deg,
+    #f7eac9 0%,
+    #f7eac9 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .glazing_warm h3 {
   margin-bottom: 2.5rem;
   font-size: 2rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   text-transform: uppercase;
@@ -459,7 +496,7 @@ a:focus, button:focus, input:focus, textarea:focus {
 }
 
 .glazing ul li:before {
-  content: '';
+  content: "";
   display: inline-block;
   margin-right: 1.7rem;
   width: 2.5rem;
@@ -479,14 +516,14 @@ a:focus, button:focus, input:focus, textarea:focus {
   vertical-align: middle;
   font-size: 2rem;
   line-height: 1.7;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
 .glazing_price p span {
   font-size: 1.4rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -495,7 +532,10 @@ a:focus, button:focus, input:focus, textarea:focus {
   padding: 2rem 2rem;
 }
 
-.glazing .aluminum, .glazing .plastic, .glazing .french, .glazing .rise {
+.glazing .aluminum,
+.glazing .plastic,
+.glazing .french,
+.glazing .rise {
   display: none;
 }
 
@@ -552,8 +592,20 @@ a:focus, button:focus, input:focus, textarea:focus {
   border-top: 1rem solid #0089cd;
   height: 8rem;
   padding: 2rem 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), color-stop(0%, #ebebeb), to(rgba(255, 255, 255, 0)));
-  background: linear-gradient(180deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#ebebeb),
+    color-stop(0%, #ebebeb),
+    to(rgba(255, 255, 255, 0))
+  );
+  background: linear-gradient(
+    180deg,
+    #ebebeb 0%,
+    #ebebeb 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .after_click a {
@@ -577,7 +629,7 @@ a:focus, button:focus, input:focus, textarea:focus {
 
 .decoration_content_material p {
   font-size: 1.4rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   color: #0089cd;
@@ -586,13 +638,15 @@ a:focus, button:focus, input:focus, textarea:focus {
 .decoration_content_material p span {
   display: block;
   font-size: 1.2rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #000000;
 }
 
-.decoration .external, .decoration .rising, .decoration .roof {
+.decoration .external,
+.decoration .rising,
+.decoration .roof {
   display: none;
 }
 
@@ -689,7 +743,7 @@ a:focus, button:focus, input:focus, textarea:focus {
 .sale_title {
   margin-bottom: 8rem;
   font-size: 4.8rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   text-transform: uppercase;
@@ -764,7 +818,7 @@ a:focus, button:focus, input:focus, textarea:focus {
 }
 
 .contacts_info p span {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -830,7 +884,7 @@ a:focus, button:focus, input:focus, textarea:focus {
 
 .footer .contacts .phone {
   font-size: 1.8rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   color: #333333;
@@ -844,7 +898,9 @@ a:focus, button:focus, input:focus, textarea:focus {
 
 /*Modals*/
 
-.popup, .popup_engineer, .popup_calc_end {
+.popup,
+.popup_engineer,
+.popup_calc_end {
   display: none;
   position: fixed;
   top: 0;
@@ -876,7 +932,9 @@ a:focus, button:focus, input:focus, textarea:focus {
   opacity: 1;
 }
 
-.popup_content, .popup_engineer_content, .popup_calc_end_content {
+.popup_content,
+.popup_engineer_content,
+.popup_calc_end_content {
   /* display: none; */
   position: fixed;
   top: 10%;
@@ -887,7 +945,9 @@ a:focus, button:focus, input:focus, textarea:focus {
   background-color: #ffffff;
 }
 
-.popup_close, .popup_engineer_close, .popup_calc_end_close {
+.popup_close,
+.popup_engineer_close,
+.popup_calc_end_close {
   position: absolute;
   top: -2.2rem;
   right: -5rem;
@@ -922,7 +982,7 @@ a:focus, button:focus, input:focus, textarea:focus {
 .popup_calc_content h2 {
   margin-bottom: 3rem;
   font-size: 3rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   color: #333333;
@@ -1015,7 +1075,7 @@ a:focus, button:focus, input:focus, textarea:focus {
 .popup_calc_profile_content h2 {
   margin-bottom: 3rem;
   font-size: 3rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
   color: #333333;
@@ -1043,12 +1103,13 @@ a:focus, button:focus, input:focus, textarea:focus {
   border-radius: 3px;
 }
 
-.popup_calc_profile_content .checkbox-custom, .popup_calc_profile_content .label {
+.popup_calc_profile_content .checkbox-custom,
+.popup_calc_profile_content .label {
   display: inline-block;
   vertical-align: middle;
 }
 
-.popup_calc_profile_content .checkbox:checked+.checkbox-custom::before {
+.popup_calc_profile_content .checkbox:checked + .checkbox-custom::before {
   content: "";
   display: block;
   position: absolute;
@@ -1124,7 +1185,7 @@ a:focus, button:focus, input:focus, textarea:focus {
     font-size: 1.3rem;
   }
   .header .working_hours p span {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 700;
     font-style: normal;
     font-size: 1.6rem;
@@ -1187,7 +1248,7 @@ a:focus, button:focus, input:focus, textarea:focus {
   }
   .header .working_hours p span {
     display: block;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 700;
     font-style: normal;
     font-size: 1.6rem;
@@ -1388,7 +1449,7 @@ a:focus, button:focus, input:focus, textarea:focus {
   }
   .footer .contacts .phone {
     font-size: 1.8rem;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 700;
     font-style: normal;
     color: #333333;
@@ -1585,10 +1646,14 @@ a:focus, button:focus, input:focus, textarea:focus {
   .feedback_block a {
     font-size: 1.5rem;
   }
-  .popup_content, .popup_engineer_content, .popup_calc_end_content {
+  .popup_content,
+  .popup_engineer_content,
+  .popup_calc_end_content {
     width: 31rem;
   }
-  .popup_close, .popup_engineer_close, .popup_calc_end_close {
+  .popup_close,
+  .popup_engineer_close,
+  .popup_calc_end_close {
     position: absolute;
     top: -1rem;
     right: 1rem;
