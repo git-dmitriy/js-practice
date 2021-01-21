@@ -1,6 +1,6 @@
+@use './reset.css';
 @use './bootstrap.css';
 @use './animate.css';
-@use './reset.css';
 
 // @import url('https://fonts.googleapis.com/css?family=Playfair+Display:700i&subset=cyrillic');
 @font-face {
@@ -136,6 +136,7 @@ h4 {
   top: 4rem;
   right: 2rem;
   cursor: pointer;
+  animation: 1.3s infinite tada;
 }
 
 .header .container {
@@ -382,7 +383,7 @@ h4 {
 }
 
 .main .p-heading-italic {
-  font-family: "Playfair Display", serif;
+  font-family: "Playfair Display SC", serif;
   font-size: 2rem;
   text-align: center;
   margin-top: 9rem;
@@ -455,6 +456,11 @@ h4 {
 
 .button-order {
   position: relative;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .button-order-img {
@@ -496,6 +502,7 @@ h4 {
   margin: 0;
   padding-left: 4rem;
   padding-right: 4rem;
+  animation: 1s ease-in 2s infinite pulse;
 }
 
 .promo .p-heading {
@@ -1144,7 +1151,7 @@ h4 {
 .often-questions .brushes {
   position: absolute;
   bottom: 0;
-  right: 5%;
+  right: 0;
 }
 
 .often-questions .spirt {
@@ -1511,6 +1518,10 @@ h4 {
   border-radius: 4px;
   transform: translateX(-50%) !important;
   padding: 3rem 6rem 4rem 6rem;
+}
+
+.popup-present {
+  animation: 1.2s linear infinite tada;
 }
 
 .status {
