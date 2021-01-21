@@ -767,6 +767,15 @@ textarea:focus {
   text-align: center;
   width: 360px;
   height: 150px;
+
+  @media (max-width: 992px) {
+    margin: 0 auto;
+  }
+
+  @media (max-width: 576px) {
+    width: 274px;
+    // font-size: ;
+  }
 }
 
 .container1 {
@@ -779,6 +788,11 @@ textarea:focus {
   color: white;
   font-size: 40px;
   margin-right: 10px;
+
+  @media (max-width: 576px) {
+    font-size: 3rem;
+    margin-right: 5px;
+  }
 }
 
 .timer1 span {
