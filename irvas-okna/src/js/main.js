@@ -5,12 +5,13 @@ import forms from "./modules/forms";
 import changeModalState from "./modules/changeModalState";
 import timer from "./modules/timer";
 import images from "./modules/images";
+import PhoneMask from "./modules/PhoneMask";
 
 window.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
   let modalState = {};
-  let deadline = "2021-01-01T00:00:00";
+  let deadline = "2022-01-01T00:00:00";
 
   changeModalState(modalState);
   modals();
@@ -33,6 +34,10 @@ window.addEventListener("DOMContentLoaded", () => {
   forms(modalState);
   timer(".container1", deadline);
   images();
+
+
+
+  const phoneInputs = new PhoneMask(".phone").init();
 });
 
 /*
