@@ -1,14 +1,6 @@
 import getScrollbarWidth from "./getScrollbarWidth";
 
 const images = () => {
-  /*
-  TODO + Отключить прокрутку страницы при открытии изображения
-
-  TODO (+-) Контролировать размер изображения в модальном окне
-         Добавлено не больше 50vw;
-
-  */
-
   const imgPopup = document.createElement("div"),
     workSection = document.querySelector(".works"),
     bigImage = document.createElement("img"),
@@ -35,10 +27,31 @@ const images = () => {
 
       const path = target.parentNode.getAttribute("href");
       bigImage.setAttribute("src", path);
-      bigImage.style.maxWidth = "50vw";
+
+      if (window.innerWidth <= 992 && window.innerWidth > 768) {
+        bigImage.style.maxWidth = "60vw";
+      } else if (window.innerWidth <= 768 && window.innerWidth > 576) {
+        bigImage.style.maxWidth = "70vw";
+      } else if (window.innerWidth <= 576) {
+        bigImage.style.maxWidth = "95vw";
+      } else {
+        bigImage.style.maxWidth = "50vw";
+      }
+
+      const closePopup = () => {
+        imgPopup.style.display = "none";
+        document.body.style.overflowY = "";
+        document.body.style.marginRight = `0px`;
+        window.removeEventListener("resize", closePopup);
+      };
+
+      window.addEventListener("resize", closePopup);
     }
 
-    if (target && target.matches("div.popup")) {
+    if (
+      (target && target.matches("div.popup")) ||
+      target.matches("div.popup > img")
+    ) {
       imgPopup.style.display = "none";
       document.body.style.overflowY = "";
       document.body.style.marginRight = `0px`;
