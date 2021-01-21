@@ -52,18 +52,21 @@ const modals = () => {
 
   function showModalOnTimer(selector, time) {
     setTimeout(function () {
-      let display;
+      let anotherPopup = document.querySelector(".popup");
 
-      document.querySelectorAll("[data-modal").forEach((item) => {
-        if (getComputedStyle(item).display !== "none") {
-          display = "block";
+      if (anotherPopup && anotherPopup.offsetWidth == 0) {
+        let display;
+        document.querySelectorAll("[data-modal").forEach((item) => {
+          if (getComputedStyle(item).display !== "none") {
+            display = "block";
+          }
+        });
+
+        if (!display) {
+          document.querySelector(selector).style.display = "block";
+          document.body.style.overflow = "hidden";
+          document.body.style.marginRight = `${scrollWidth}px`;
         }
-      });
-
-      if (!display) {
-        document.querySelector(selector).style.display = "block";
-        document.body.style.overflow = "hidden";
-        document.body.style.marginRight = `${scrollWidth}px`;
       }
     }, time);
   }
