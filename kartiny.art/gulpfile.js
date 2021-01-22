@@ -150,3 +150,8 @@ gulp.task("build-prod-js", () => {
 });
 
 gulp.task("default", gulp.series("build", "watch"));
+
+gulp.task(
+  "prod",
+  gulp.series("copy-html", "copy-assets", "styles", "build-prod-js", "watch")
+);
