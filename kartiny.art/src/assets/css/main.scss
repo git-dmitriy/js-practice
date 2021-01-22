@@ -54,6 +54,7 @@ html {
 
 body {
   font-family: "Circe Regular", sans-serif;
+  overflow-x: hidden;
 }
 
 p {
@@ -587,6 +588,7 @@ h4 {
 .card-block {
   background-color: #f7e7e6;
   padding-top: 7rem;
+  padding-bottom: 5rem;
 }
 
 .card-block h3 {
@@ -782,10 +784,6 @@ h4 {
 
 .portfolio-block img {
   max-width: 100%;
-}
-
-.portfolio-block img:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .portfolio-no {
@@ -1019,6 +1017,11 @@ h4 {
 .feedback {
   background-color: #f7e7e6;
   padding: 9rem 0;
+}
+
+.feedback-slider {
+  min-height: 400px;
+  position: relative;
 }
 
 .feedback-slider-item {
@@ -1875,10 +1878,7 @@ h4 {
     max-width: auto;
     margin-left: 20%;
   }
-  .main-slider-btn {
-    width: 2rem;
-    height: 2rem;
-  }
+
   .main .logo {
     font-size: 1.5rem;
     line-height: 4rem;
