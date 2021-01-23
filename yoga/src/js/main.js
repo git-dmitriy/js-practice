@@ -3,6 +3,7 @@ import { Slider } from "./modules/Slider";
 import { Tabs } from "./modules/Tabs";
 import { Timer } from "./modules/Timer";
 import { PhoneMask } from "./modules/PhoneMask";
+import "lazysizes";
 
 window.addEventListener("DOMContentLoaded", function () {
   "use strict";

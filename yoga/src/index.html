@@ -72,8 +72,10 @@
 							Узнать подробнее
 						</div>
 					</div>
-					<div class="photo col-lg-6 col-sm-12">
-						<img src="assets/img/massage.jpg" alt="Massage">
+					<div class="photo col-lg-6 col-sm-12 lazyload">
+						<img src="assets/img/massage.jpg" alt="Massage" srcset="assets/img/massage.1x.jpg 1x,
+										assets/img/massage.2x.jpg 2x, 
+										assets/img/massage.3x.jpg 3x">
 					</div>
 				</div>
 				<div class="info-tab-content fade">
@@ -88,8 +90,10 @@
 							Узнать подробнее
 						</div>
 					</div>
-					<div class="photo col-lg-6 col-sm-12">
-						<img src="assets/img/sunset.jpg" alt="sunset">
+					<div class="photo col-lg-6 col-sm-12 lazyload">
+						<img src="assets/img/sunset.jpg" alt="sunset" srcset="assets/img/sunset.1x.jpg 1x,
+										assets/img/sunset.2x.jpg 2x,
+										assets/img/sunset.3x.jpg 3x">
 					</div>
 				</div>
 				<div class="info-tab-content fade">
@@ -102,8 +106,10 @@
 							Узнать подробнее
 						</div>
 					</div>
-					<div class="photo col-lg-6 col-sm-12">
-						<img src="assets/img/sunrise.jpg" alt="sunrise">
+					<div class="photo col-lg-6 col-sm-12 lazyload">
+						<img src="assets/img/sunrise.jpg" alt="sunrise" srcset="assets/img/sunrise.1x.jpg 1x,
+																																		assets/img/sunrise.2x.jpg 2x,
+																																		assets/img/sunrise.3x.jpg 3x">
 					</div>
 				</div>
 				<div class="info-tab-content fade">
@@ -118,8 +124,10 @@
 							Узнать подробнее
 						</div>
 					</div>
-					<div class="photo col-lg-6 col-sm-12">
-						<img src="assets/img/yoga.jpg" alt="yoga">
+					<div class="photo col-lg-6 col-sm-12 lazyload">
+						<img src="assets/img/yoga.jpg" alt="yoga" srcset="assets/img/yoga.1x.jpg 1x,
+										assets/img/yoga.2x.jpg 2x,
+										assets/img/yoga.3x.jpg 3x">
 					</div>
 				</div>
 			</div>
@@ -139,18 +147,41 @@
 				<div class="slider-title">Фото с наших поездок
 				</div>
 				<div class="wrap">
-
 					<div class="slider-item fade">
-						<img src="assets/img/slider_1.jpg" alt="slider">
+						<picture>
+							<source media="(max-width:690px)" data-srcset="assets/img/slider_1.510.jpg">
+							<source media="(min-width:691px) and (max-width:892px)" data-srcset="assets/img/slider_1.690.jpg">
+							<source media="(min-width: 893px) and (max-width:1179px)" data-srcset="assets/img/slider_1.930.jpg">
+							<source media="(min-width: 1180px)" data-srcset="assets/img/slider_1.1110.jpg">
+							<img data-src="assets/img/slider_1.jpg" class="lazyload" alt="Тадж-Махала">
+						</picture>
 					</div>
 					<div class="slider-item fade">
-						<img src="assets/img/slider_2.jpg" alt="slider">
+						<picture>
+							<source media="(max-width:690px)" data-srcset="assets/img/slider_2.510.jpg">
+							<source media="(min-width:691px) and (max-width:892px)" data-srcset="assets/img/slider_2.690.jpg">
+							<source media="(min-width: 893px) and (max-width:1179px)" data-srcset="assets/img/slider_2.930.jpg">
+							<source media="(min-width: 1180px)" data-srcset="assets/img/slider_2.1110.jpg">
+							<img data-src="assets/img/slider_2.jpg" class="lazyload" alt="Гавань на закате">
+						</picture>
 					</div>
 					<div class="slider-item fade">
-						<img src="assets/img/slider_3.jpg" alt="slider">
+						<picture>
+							<source media="(max-width:690px)" data-srcset="assets/img/slider_3.510.jpg">
+							<source media="(min-width:691px) and (max-width:892px)" data-srcset="assets/img/slider_3.690.jpg">
+							<source media="(min-width: 893px) and (max-width:1179px)" data-srcset="assets/img/slider_3.930.jpg">
+							<source media="(min-width: 1180px)" data-srcset="assets/img/slider_3.1110.jpg">
+							<img data-src="assets/img/slider_3.jpg" class="lazyload" alt="Горы на рассвете ">
+						</picture>
 					</div>
 					<div class="slider-item fade">
-						<img src="assets/img/slider_4.jpg" alt="slider">
+						<picture>
+							<source media="(max-width:690px)" data-srcset="assets/img/slider_4.510.jpg">
+							<source media="(min-width:691px) and (max-width:892px)" data-srcset="assets/img/slider_4.690.jpg">
+							<source media="(min-width: 893px) and (max-width:1179px)" data-srcset="assets/img/slider_4.930.jpg">
+							<source media="(min-width: 1180px)" data-srcset="assets/img/slider_4.1110.jpg">
+							<img data-src="assets/img/slider_4.jpg" class="lazyload" alt="">
+						</picture>
 					</div>
 
 					<div class="prev">
@@ -190,9 +221,9 @@
 			</div>
 			<div class="contact row" id="contacts">
 				<div class="contact-img col">
-					<img src="assets/img/letter.jpg" alt="letter">
+					<img data-src="assets/img/letter.jpg" class="lazyload" alt="letter">
 				</div>
-				<div class="contact-form  col">
+				<div class="contact-form col">
 					<div class="contact-form-title">
 						Мы с вами свяжемся
 					</div>
@@ -209,22 +240,22 @@
 				<ul class="social">
 					<li class="social-block">
 						<a href="#">
-							<img src="assets/logo/twitter-logo-silhouette.svg" alt="">
+							<img src="assets/logo/twitter-logo-silhouette.svg" class="lazyload" alt=" ">
 						</a>
 					</li>
 					<li class="social-block">
 						<a href="#">
-							<img src="assets/logo/facebook-logo.svg" alt="">
+							<img src="assets/logo/facebook-logo.svg" class="lazyload" alt=" ">
 						</a>
 					</li>
 					<li class="social-block">
 						<a href="#">
-							<img src="assets/logo/instagram-social-network-logo-of-photo-camera.svg" alt="">
+							<img src="assets/logo/instagram-social-network-logo-of-photo-camera.svg" class="lazyload" alt=" ">
 						</a>
 					</li>
 					<li class="social-block">
 						<a href="#">
-							<img src="assets/logo/pinterest-logo.svg" alt="">
+							<img src="assets/logo/pinterest-logo.svg" class="lazyload" alt=" ">
 						</a>
 					</li>
 					<ul />
