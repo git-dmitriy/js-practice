@@ -37,6 +37,7 @@
     "webpack-stream": "^5.2.1"
   },
   "dependencies": {
-    "cleave.js": "^1.6.0"
+    "cleave.js": "^1.6.0",
+    "lazysizes": "^5.3.0"
   }
 }
