@@ -10,6 +10,7 @@ const sass = require("gulp-sass");
 const gcmq = require("gulp-group-css-media-queries");
 const cleanCSS = require("gulp-clean-css");
 const autoprefixer = require("gulp-autoprefixer");
+const htmlmin = require("gulp-htmlmin");
 
 sass.compiler = require("sass");
 
@@ -18,6 +19,14 @@ const dist = "./dist/";
 gulp.task("copy-html", () => {
   return gulp
     .src("./src/index.html")
+    .pipe(gulp.dest(dist))
+    .pipe(browsersync.stream());
+});
+
+gulp.task("minify-html", () => {
+  return gulp
+    .src("./src/index.html")
+    .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest(dist))
     .pipe(browsersync.stream());
 });
@@ -152,7 +161,7 @@ gulp.task("build-prod-js", () => {
 
 gulp.task(
   "build:prod",
-  gulp.parallel("copy-html", "styles", "copy-assets", "build-prod-js")
+  gulp.series("minify-html", "styles", "copy-assets", "build-prod-js", "watch")
 );
 
 gulp.task("default", gulp.series("clean", "build", "watch"));
