@@ -6,6 +6,7 @@ import changeModalState from "./modules/changeModalState";
 import timer from "./modules/timer";
 import images from "./modules/images";
 import PhoneMask from "./modules/PhoneMask";
+import "lazysizes";
 
 window.addEventListener("DOMContentLoaded", () => {
   "use strict";
@@ -34,8 +35,6 @@ window.addEventListener("DOMContentLoaded", () => {
   forms(modalState);
   timer(".container1", deadline);
   images();
-
-
 
   const phoneInputs = new PhoneMask(".phone").init();
 });
