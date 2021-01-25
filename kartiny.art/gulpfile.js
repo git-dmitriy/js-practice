@@ -10,6 +10,7 @@ const sass = require("gulp-sass");
 const gcmq = require("gulp-group-css-media-queries");
 const cleanCSS = require("gulp-clean-css");
 const autoprefixer = require("gulp-autoprefixer");
+const purgecss = require("gulp-purgecss");
 
 sass.compiler = require("sass");
 
@@ -28,12 +29,17 @@ gulp.task("styles", () => {
     .pipe(concat("main.css"))
     .pipe(sass())
     .pipe(gcmq())
-    .pipe(cleanCSS())
     .pipe(
       autoprefixer(["last 15 versions", "> 1%", "ie 8", "ie 7"], {
         cascade: true,
       })
     )
+    .pipe(
+      purgecss({
+        content: ["src/index.html"],
+      })
+    )
+    .pipe(cleanCSS())
     .pipe(gulp.dest(dist + "assets/css"))
     .pipe(browsersync.stream());
 });
