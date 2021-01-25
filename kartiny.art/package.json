@@ -30,8 +30,8 @@
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-htmlmin": "^5.0.1",
     "gulp-plumber": "^1.2.1",
+    "gulp-purgecss": "^4.0.0",
     "gulp-sass": "^4.1.0",
-    "purgecss": "^4.0.0",
     "sass": "^1.32.5",
     "webpack": "^4.41.2",
     "webpack-stream": "^5.2.1"
