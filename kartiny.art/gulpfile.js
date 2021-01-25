@@ -37,6 +37,7 @@ gulp.task("styles", () => {
     .pipe(
       purgecss({
         content: ["src/index.html"],
+        keyframes: true,
       })
     )
     .pipe(cleanCSS())
