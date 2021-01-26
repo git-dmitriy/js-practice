@@ -655,6 +655,13 @@ h4 {
   margin-top: 3rem;
 }
 
+.calc select {
+  @media (max-width: 576px) {
+    margin-bottom: 10px !important;
+    min-width: 278px;
+  }
+}
+
 .calc-price {
   background-color: #f7e7e6;
   padding: 4rem 7.5rem;
@@ -1018,8 +1025,11 @@ h4 {
 }
 
 .feedback-slider {
-  min-height: 400px;
   position: relative;
+
+  @media (min-width: 1200px) {
+    min-height: 400px;
+  }
 }
 
 .feedback-slider-item {
