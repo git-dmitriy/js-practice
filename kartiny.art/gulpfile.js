@@ -37,7 +37,6 @@ gulp.task("styles", () => {
     .pipe(
       purgecss({
         content: ["src/index.html"],
-        keyframes: true,
       })
     )
     .pipe(cleanCSS())
@@ -94,7 +93,7 @@ gulp.task("build-js", () => {
 
 gulp.task("copy-assets", () => {
   return gulp
-    .src("./src/assets/**/*.*")
+    .src(["./src/assets/**/*.*", "!./src/assets/css/**"])
     .pipe(gulp.dest(dist + "/assets"))
     .on("end", browsersync.reload);
 });
@@ -156,9 +155,16 @@ gulp.task("build-prod-js", () => {
     .pipe(gulp.dest(dist));
 });
 
-gulp.task("default", gulp.series("build", "watch"));
+gulp.task("default", gulp.series("clean", "build", "watch"));
 
 gulp.task(
   "prod",
-  gulp.series("copy-html", "copy-assets", "styles", "build-prod-js", "watch")
+  gulp.series(
+    "clean",
+    "copy-html",
+    "copy-assets",
+    "styles",
+    "build-prod-js",
+    "watch"
+  )
 );
