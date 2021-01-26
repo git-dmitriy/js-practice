@@ -37,6 +37,9 @@ gulp.task("styles", () => {
     .pipe(
       purgecss({
         content: ["src/index.html"],
+        safelist: {
+          deep: ["/often-questions/"],
+        },
       })
     )
     .pipe(cleanCSS())
