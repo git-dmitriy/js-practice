@@ -13,6 +13,8 @@ const autoprefixer = require("gulp-autoprefixer");
 const htmlmin = require("gulp-htmlmin");
 const purgecss = require("gulp-purgecss");
 
+const imagemin = require("gulp-imagemin");
+
 sass.compiler = require("sass");
 
 const dist = "./dist/";
@@ -43,16 +45,12 @@ gulp.task("styles", () => {
     .pipe(concat("main.css"))
     .pipe(sass())
     .pipe(gcmq())
-    .pipe(
-      autoprefixer(["last 15 versions", "> 1%", "ie 8", "ie 7"], {
-        cascade: true,
-      })
-    )
+    .pipe(autoprefixer())
     .pipe(
       purgecss({
         content: ["src/index.html"],
         safelist: {
-          deep: [".content"],
+          deep: ["content"],
         },
       })
     )
@@ -61,12 +59,30 @@ gulp.task("styles", () => {
     .pipe(browsersync.stream());
 });
 
+gulp.task("imagemin", () => {
+  return gulp
+    .src("./src/assets/img/*")
+    .pipe(plumber())
+    .pipe(
+      imagemin([
+        imagemin.gifsicle({ interlaced: true }),
+        imagemin.mozjpeg({ quality: 75, progressive: true }),
+        imagemin.optipng({ optimizationLevel: 5 }),
+        imagemin.svgo({
+          plugins: [{ removeViewBox: true }, { cleanupIDs: false }],
+        }),
+      ])
+    )
+    .pipe(gulp.dest(dist + "assets/img"));
+});
+
 gulp.task("build-js", () => {
   return gulp
     .src("./src/js/main.js")
     .pipe(
       webpack({
-        mode: "development",
+        // mode: "development",
+        mode: "production",
         output: {
           filename: "script.js",
         },
@@ -103,7 +119,11 @@ gulp.task("build-js", () => {
 
 gulp.task("copy-assets", () => {
   return gulp
-    .src(["./src/assets/**/*.*", "!./src/assets/css/**"])
+    .src([
+      "./src/assets/**/*.*",
+      "!./src/assets/css/**",
+      "!./src/assets/img/**",
+    ])
     .pipe(gulp.dest(dist + "/assets"))
     .on("end", browsersync.reload);
 });
@@ -128,7 +148,7 @@ gulp.task(
   "build",
   gulp.series(
     "clean",
-    gulp.parallel("copy-html", "styles", "copy-assets", "build-js")
+    gulp.parallel("copy-html", "styles", "imagemin", "copy-assets", "build-js")
   )
 );
 
@@ -170,7 +190,14 @@ gulp.task("build-prod-js", () => {
 
 gulp.task(
   "build:prod",
-  gulp.series("minify-html", "styles", "copy-assets", "build-prod-js", "watch")
+  gulp.parallel(
+    "minify-html",
+    "styles",
+    "imagemin",
+    "copy-assets",
+    "build-prod-js"
+  ),
+  "watch"
 );
 
 gulp.task("default", gulp.series("clean", "build", "watch"));
