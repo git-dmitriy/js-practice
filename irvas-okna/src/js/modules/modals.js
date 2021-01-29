@@ -56,7 +56,7 @@ const modals = () => {
 
       if (anotherPopup && anotherPopup.offsetWidth == 0) {
         let display;
-        document.querySelectorAll("[data-modal").forEach((item) => {
+        document.querySelectorAll("[data-modal]").forEach((item) => {
           if (getComputedStyle(item).display !== "none") {
             display = "block";
           }
@@ -95,7 +95,7 @@ const modals = () => {
     false
   );
 
-  showModalOnTimer(".popup", 60000);
+  showModalOnTimer("[data-modal-timer]", 6000);
 };
 
 export default modals;
