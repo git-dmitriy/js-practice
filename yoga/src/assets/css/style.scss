@@ -295,6 +295,26 @@ a:active {
 .content .info-tab-content .photo img {
   width: 100%;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8);
+
+  @media (min-width: 1200px) {
+    min-height: 236px;
+  }
+
+  @media (min-width: 992px) {
+    min-height: 191px;
+  }
+
+  @media (min-width: 768px) {
+    min-height: 278px;
+  }
+
+  @media (min-width: 576px) {
+    min-height: 224px;
+  }
+
+  @media (max-width: 576px) {
+    min-height: 114px;
+  }
 }
 
 .content .info .hide {
