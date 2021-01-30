@@ -433,6 +433,22 @@ h4 {
 
 .main-slider img {
   width: 100%;
+
+  @media (min-width: 1200px) {
+    min-height: 635px;
+  }
+
+  @media (min-width: 992px) {
+    min-height: 521px;
+  }
+
+  @media (min-width: 768px) {
+    min-height: 701px;
+  }
+
+  @media (max-width: 576px) {
+    min-height: 266px;
+  }
 }
 
 .main-slider-btn {
