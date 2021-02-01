@@ -84,6 +84,17 @@ h4 {
   font-family: "Circe Extra Bold", sans-serif;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
 .p15 {
   font-size: 1.5;
 }
@@ -163,8 +174,17 @@ h4 {
   opacity: 0;
 
   @media (max-width: 992px) {
-    // display: none;
     opacity: 1;
+  }
+}
+
+.header .burger-text {
+  @media (min-width: 992px) {
+    display: none;
+  }
+
+  @media (max-width: 991px) {
+    display: block !important;
   }
 }
 
@@ -1705,6 +1725,7 @@ h4 {
   .header .burger span {
     display: none;
   }
+
   .header .burger img {
     width: 2rem;
     height: 2rem;

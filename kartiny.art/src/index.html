@@ -23,7 +23,8 @@
 		<div class=container>
 			<div class="col-md-2 col-sm-3 col-xs-6">
 				<button class=burger>
-					<img class="lazyload" data-src=assets/img/burger.svg alt><span>Каталог товаров</span>
+					<img class="lazyload" data-src=assets/img/burger.svg alt><span>Каталог товаров</span> <span
+						class="visually-hidden burger-text">Бургер меню</span>
 				</button>
 				<ul class=burger-menu>
 					<li>
@@ -95,7 +96,8 @@
 					<div class=file_upload>
 						<button type=button>Загрузить фотографию</button>
 						<div>Файл не выбран</div>
-						<input type=file name=upload>
+						<label for="main-file-upload" class="visually-hidden">Загрузить фотографию</label>
+						<input id="main-file-upload" type=file name=upload>
 					</div>
 					<p class=email>E-mail: <a href=mailto:info@kartiny.art>info@kartiny.art</a></p>
 				</div>
@@ -222,8 +224,10 @@
 						<div class=file_upload>
 							<button type=button>Загрузить фотографию</button>
 							<div>Файл не выбран</div>
-							<input type=file name=upload>
+							<label for="calc-file-input" class="visually-hidden">Загрузите фотографию</label>
+							<input id="calc-file-input" type=file name=upload>
 						</div>
+						<label for="size" class="visually-hidden">Размер картины</label>
 						<select id=size>
 							<option value>Выберите размер картины</option>
 							<option value="500">40x50</option>
@@ -231,6 +235,7 @@
 							<option value="1500">70x70</option>
 							<option value="2000">70x100</option>
 						</select>
+						<label for="material" class="visually-hidden">Выберите материал картины</label>
 						<select id=material>
 							<option value>Выберите материал картины</option>
 							<option value='1'
@@ -243,13 +248,15 @@
 								хлопка
 							</option>
 						</select>
+						<label for="options" class="visually-hidden">Дополнительные услуги</label>
 						<select id=options>
 							<option value='0'>Дополнительные услуги</option>
 							<option value='1000'>Покрытие арт-гелем</option>
 							<option value='2000'>Экспресс-изготовление</option>
 							<option value='500'>Доставка готовых работ </option>
 						</select>
-						<input type="text" class="promocode" placeholder="Введите ваш промокод">
+						<label for="promocode" class="visually-hidden">Введите ваш промокод</label>
+						<input type="text" class="promocode" id="promocode" placeholder="Введите ваш промокод">
 						<div class=calc-price>Для расчета нужно выбрать размер картины и материал картины</div>
 						<button class="button button-order">Быстрый заказ</button>
 					</form>
@@ -625,10 +632,15 @@
 			<div class="col-md-10 col-md-offset-1">
 				<form action=# method=POST>
 					<div class=input-wrapper>
-						<input type=text name=name placeholder="Ваше имя" required>
-						<input type=text name=phone placeholder="Ваш телефон" required>
-						<input type=text name=email placeholder="Ваш E-mail">
-						<input class=input-text name=message type=text placeholder="Задайте ваш вопрос здесь" required>
+						<label for="consultation-name" class="visually-hidden"></label>
+						<input id="consultation-name" type=text name=name placeholder="Ваше имя" required>
+						<label for="consultation-phone" class="visually-hidden"></label>
+						<input id="consultation-phone" type=text name=phone placeholder="Ваш телефон" required>
+						<label for="consultation-email" class="visually-hidden"></label>
+						<input id="consultation-email" type=text name=email placeholder="Ваш E-mail">
+						<label for="consultation-text" class="visually-hidden"></label>
+						<input id="consultation-text" class=input-text name=message type=text placeholder="Задайте ваш вопрос здесь"
+							required>
 					</div>
 					<button class="button button-order">Получить консультацию</button>
 				</form>
@@ -693,8 +705,10 @@
 				<h4>Остались вопросы? Закажите обратный звонок</h4>
 				<div class=main-form>
 					<form class=form action=# method=POST>
-						<input type=text name=name placeholder="Ваше имя" required>
-						<input type=text name=phone placeholder="Ваш телефон" required>
+						<label for="form-name" class="visually-hidden">Ваше имя</label>
+						<input type=text name=name id="form-name" placeholder="Ваше имя" required>
+						<label for="form-phone" class="visually-hidden">Ваш номер телефона</label>
+						<input type=text name=phone id="form-phone" placeholder="Ваш телефон" required>
 						<button class="button button-order">Получить консультацию</button>
 					</form>
 				</div>
@@ -720,7 +734,8 @@
 					<div class=file_upload>
 						<button type=button>Загрузить фотографию</button>
 						<div>Файл не выбран</div>
-						<input type=file name=upload>
+						<label for="file-upload" class="visually-hidden"> Загрузить фотографию</label>
+						<input id="file-upload" type=file name=upload>
 					</div>
 					<div class=main-form>
 						<div class=form>
@@ -741,6 +756,7 @@
 				d="M26 0H0V26H26V0ZM4.6593 17.7519L13.1233 10.33L21.5873 17.7519L22.9059 16.2481L13.7826 8.24813L13.1233 7.67L12.464 8.24813L3.3407 16.2481L4.6593 17.7519Z"
 				fill="black" />
 		</svg>
+		<span class="visually-hidden">Вернуться в начало страницы</span>
 	</a>
 	<script src="script.js"></script>
 </body>
