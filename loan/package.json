@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp"
   },
   "author": "",
   "license": "ISC",
@@ -18,7 +18,7 @@
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
-    "browser-sync": "^2.26.12",
+    "browser-sync": "^2.27.5",
     "core-js": "^3.4.2",
     "gulp": "^4.0.2",
     "webpack": "^4.41.2",
