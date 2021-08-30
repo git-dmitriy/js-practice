@@ -21,7 +21,7 @@
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
-    "browser-sync": "^2.26.12",
+    "browser-sync": "^2.27.5",
     "core-js": "^3.4.2",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
